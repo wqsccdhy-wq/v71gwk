@@ -60,7 +60,7 @@ public class OcipOrgController extends BaseController {
 		}
 		
 		/**
-		 * TODO 测试
+		 * TODO 测试，正式导入时不要打包这部分代码
 		 */
 		//String resourceId = "-6219453952095074147";
 		//ocipUnitManagerImpl.importOrg(resourceId , flipInfo);
