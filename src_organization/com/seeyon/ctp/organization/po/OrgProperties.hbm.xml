@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.seeyon.ctp.organization.po">
+    <!-- 属性表 -->
+  <class
+    name="OrgProperties"
+    table="ORG_PROPERTIES"
+  >
+    <id
+      name="id"
+      type="long"
+      column="ID"
+    >
+      <generator class="assigned"/>
+    </id>
+
+        <!-- 资源id -->
+    <property
+      name="sourceId"
+      column="SOURCE_ID"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+        <!-- 名字 -->
+    <property
+      name="name"
+      column="NAME"
+      type="string"
+      not-null="false"
+      length="500"
+    />
+        <!-- 值 -->
+    <property
+      name="value"
+      column="VALUE"
+      type="string"
+      not-null="false"
+      length="500"
+    />
+        <!-- 类型 -->
+    <property
+      name="type"
+      column="TYPE"
+      type="integer"
+      not-null="false"
+      length="14"
+    />
+        <!-- 单位id -->
+    <property
+      name="orgAccountId"
+      column="ORG_ACCOUNT_ID"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+
+
+  </class>
+</hibernate-mapping>

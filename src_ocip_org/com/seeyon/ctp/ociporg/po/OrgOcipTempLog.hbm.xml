@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.seeyon.ctp.ociporg.po.OrgOcipTempLog" table="org_ocip_temp_log">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property generated="never" lazy="false" name="msg" optimistic-lock="true" type="string" unique="false">
+            <column name="msg"/>
+        </property>
+        <property generated="never" lazy="false" name="resourceId" optimistic-lock="true" type="string" unique="false">
+            <column length="30" name="resourceId"/>
+        </property>
+        <property generated="never" lazy="false" name="orgId" optimistic-lock="true" type="string" unique="false">
+            <column length="30" name="orgId"/>
+        </property>
+        <property generated="never" lazy="false" name="name" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="name"/>
+        </property>
+        <property generated="never" lazy="false" name="type" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="type"/>
+        </property>
+        <property name="createTime" type="timestamp" column="create_time" length="19" />
+        
+         <property name="isOk" type="string" unique="false">
+            <column length="20" name="isok"/>
+        </property>
+    </class>
+</hibernate-mapping>

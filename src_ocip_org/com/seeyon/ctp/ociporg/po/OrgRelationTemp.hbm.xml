@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.seeyon.ctp.ociporg.po.OrgRelationTemp" table="org_relation_temp">
+        <id name="id" type="string">
+            <column length="64" name="ID"/>
+            <generator class="uuid"/>
+        </id>
+        <property generated="never" lazy="false" name="unitId" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="UNIT_ID"/>
+        </property>
+        <property generated="never" lazy="false" name="departmentId" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="DEPARTMENT_ID"/>
+        </property>
+        <property generated="never" lazy="false" name="postId" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="POST_ID"/>
+        </property>
+        <property generated="never" lazy="false" name="resourceId" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="RESOURCE_ID"/>
+        </property>
+        <property generated="never" lazy="false" name="userId" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="USER_ID"/>
+        </property>
+        <property generated="never" lazy="false" name="relationType" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="RELATION_TYPE"/>
+        </property>
+        <property generated="never" lazy="false" name="synState" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="SYN_STATE">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="delFlag" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="DEL_FLAG">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="createTime" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="19" name="CREATE_TIME">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="updateTime" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="19" name="UPDATE_TIME">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="type" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="TYPE"/>
+        </property>
+    </class>
+</hibernate-mapping>

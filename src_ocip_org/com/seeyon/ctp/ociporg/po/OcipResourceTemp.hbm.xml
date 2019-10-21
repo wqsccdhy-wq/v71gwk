@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.seeyon.ctp.ociporg.po.OcipResourceTemp" table="ocip_resource_temp">
+        <id name="id" type="string">
+            <column length="64" name="ID"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="sysName" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="SYS_NAME" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="code" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="CODE"/>
+        </property>
+        <property generated="never" lazy="false" name="ip" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="IP" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="port" optimistic-lock="true" type="string" unique="false">
+            <column length="10" name="PORT" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="appName" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="APP_NAME" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="remark" optimistic-lock="true" type="string" unique="false">
+            <column length="1000" name="REMARK"/>
+        </property>
+        <property generated="never" lazy="false" name="majorUser" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="MAJOR_USER"/>
+        </property>
+        <property generated="never" lazy="false" name="contactInfo" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="CONTACT_INFO"/>
+        </property>
+        <property generated="never" lazy="false" name="isEnable" optimistic-lock="true" type="int" unique="false">
+            <column name="IS_ENABLE" not-null="true">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="sortId" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="SORT_ID">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="delFlag" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="DEL_FLAG">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="createTime" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="19" name="CREATE_TIME">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="updateTime" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="19" name="UPDATE_TIME">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="provider" optimistic-lock="true" type="string" unique="false">
+            <column name="PROVIDER"/>
+        </property>
+        <property generated="never" lazy="false" name="authorizedNumber" optimistic-lock="true" type="java.lang.Long" unique="false">
+            <column name="AUTHORIZED_NUMBER"/>
+        </property>
+        <property generated="never" lazy="false" name="isFlag" optimistic-lock="true" type="java.lang.Short" unique="false">
+            <column name="IS_FLAG"/>
+        </property>
+        <property generated="never" lazy="false" name="conValue" optimistic-lock="true" type="int" unique="false">
+            <column name="CON_VALUE"/>
+        </property>
+    </class>
+</hibernate-mapping>

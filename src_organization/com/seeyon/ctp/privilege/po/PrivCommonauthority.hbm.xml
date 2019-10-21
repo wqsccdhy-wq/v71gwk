@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.seeyon.ctp.privilege.po">
+    <!-- 通用授权 -->
+  <class
+    name="PrivCommonauthority"
+    table="PRIV_COMMONAUTHORITY"
+  >
+    <id
+      name="id"
+      type="long"
+      column="ID"
+    >
+      <generator class="assigned"/>
+    </id>
+
+        <!-- 资源id -->
+    <property
+      name="resourceid"
+      column="RESOURCEID"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+        <!-- 结束时间 -->
+    <property
+      name="endDate"
+      column="END_DATE"
+      type="date"
+      not-null="false"
+      length="7"
+    />
+        <!-- 开始时间 -->
+    <property
+      name="beginDate"
+      column="BEGIN_DATE"
+      type="date"
+      not-null="false"
+      length="7"
+    />
+        <!-- 0个人1部门等 -->
+    <property
+      name="userType"
+      column="USER_TYPE"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+        <!-- 资源类型1协同2公文等 -->
+    <property
+      name="resourceType"
+      column="RESOURCE_TYPE"
+      type="integer"
+      not-null="false"
+      length="14"
+    />
+        <!-- 授权用户id -->
+    <property
+      name="userid"
+      column="USERID"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+
+
+  </class>
+</hibernate-mapping>

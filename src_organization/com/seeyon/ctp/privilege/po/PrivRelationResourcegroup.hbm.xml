@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.seeyon.ctp.privilege.po">
+    <!-- 资源组，解决两个问题，可以更加合理的呈现真正的授权，比如以后可以对协同可以两种权限：发协同、收协同。两外一个解决权限之间的关联。 -->
+  <class
+    name="PrivRelationResourcegroup"
+    table="PRIV_RELATION_RESOURCEGROUP"
+  >
+    <id
+      name="id"
+      type="long"
+      column="ID"
+    >
+      <generator class="assigned"/>
+    </id>
+
+        <!-- 资源ID -->
+    <property
+      name="resourceid"
+      column="RESOURCEID"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+        <!-- 资源组ID -->
+    <property
+      name="resourceGroupid"
+      column="RESOURCE_GROUPID"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+
+
+  </class>
+</hibernate-mapping>

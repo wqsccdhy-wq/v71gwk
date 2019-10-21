@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.seeyon.ctp.organization.po">
+    <!-- 人 -->
+  <class
+    name="OrgVisitor"
+    table="ORG_VISITOR"
+  >
+    <id
+      name="id"
+      type="long"
+      column="ID"
+    >
+      <generator class="assigned"/>
+    </id>
+
+    <!-- 姓名 -->
+    <property
+      name="name"
+      column="NAME"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    <property
+      name="type"
+      column="TYPE"
+      type="string"
+      not-null="false"
+      length="20"
+    />
+    <property
+      name="state"
+      column="STATE"
+      type="integer"
+      not-null="false"
+      length="10"
+    />
+     <property
+      name="mobile"
+      column="MOBILE"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    
+    <property
+      name="account_name"
+      column="ACCOUNT_NAME"
+      type="string"
+      not-null="false"
+      length="200"
+    />
+    
+    <property
+      name="create_date"
+      column="CREATE_DATE"
+      type="timestamp"
+      not-null="false"
+      length="7"
+    />
+    <property
+      name="update_date"
+      column="UPDATE_DATE"
+      type="timestamp"
+      not-null="false"
+      length="7"
+    />
+    <property
+      name="ext_attr_1"
+      column="EXT_ATTR_1"
+      type="string"
+      not-null="false"
+      length="100"
+    />
+    <property
+      name="ext_attr_2"
+      column="EXT_ATTR_2"
+      type="string"
+      not-null="false"
+      length="100"
+    />
+    <property
+      name="ext_attr_3"
+      column="EXT_ATTR_3"
+      type="string"
+      not-null="false"
+      length="100"
+    />
+    <property
+      name="ext_attr_4"
+      column="EXT_ATTR_4"
+      type="string"
+      not-null="false"
+      length="100"
+    />
+    <property
+      name="ext_attr_5"
+      column="EXT_ATTR_5"
+      type="string"
+      not-null="false"
+      length="500"
+    />
+    <property
+      name="ext_attr_6"
+      column="EXT_ATTR_6"
+      type="string"
+      not-null="false"
+      length="500"
+    />
+    
+   <property
+      name="ext_attr_7"
+      column="EXT_ATTR_7"
+      type="string"
+      not-null="false"
+      length="1000"
+    />
+    
+   <property
+      name="ext_attr_8"
+      column="EXT_ATTR_8"
+      type="string"
+      not-null="false"
+      length="1000"
+    />
+    
+    <property
+      name="ext_attr_9"
+      column="EXT_ATTR_9"
+      type="string"
+      not-null="false"
+      length="2000"
+    />
+    
+    <property
+      name="ext_attr_10"
+      column="EXT_ATTR_10"
+      type="string"
+      not-null="false"
+      length="2000"
+    />
+    
+    <property
+      name="orgAccountId"
+      column="ORG_ACCOUNT_ID"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+
+  </class>
+</hibernate-mapping>

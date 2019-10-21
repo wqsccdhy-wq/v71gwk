@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.seeyon.ctp.ociporg.po.OrgUserJoinTemp" table="org_user_join_temp">
+        <id name="id" type="string">
+            <column length="64" name="ID"/>
+            <generator class="uuid"/>
+        </id>
+        <property generated="never" lazy="false" name="orgPlatformUserId" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="ORG_PLATFORM_USER_ID"/>
+        </property>
+        <property generated="never" lazy="false" name="orgUserLevel" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="ORG_USER_LEVEL"/>
+        </property>
+        <property generated="never" lazy="false" name="name" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="NAME"/>
+        </property>
+        <property generated="never" lazy="false" name="code" optimistic-lock="true" type="string" unique="false">
+            <column name="CODE">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="usedName" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="USED_NAME">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="sex" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="SEX">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="birthday" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="19" name="BIRTHDAY">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="nation" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="NATION">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="birthPlace" optimistic-lock="true" type="string" unique="false">
+            <column name="BIRTH_PLACE"/>
+        </property>
+        <property generated="never" lazy="false" name="address" optimistic-lock="true" type="string" unique="false">
+            <column name="ADDRESS"/>
+        </property>
+        <property generated="never" lazy="false" name="idCard" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="ID_CARD"/>
+        </property>
+        <property generated="never" lazy="false" name="passPort" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="PASS_PORT"/>
+        </property>
+        <property generated="never" lazy="false" name="driveLicense" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="DRIVE_LICENSE"/>
+        </property>
+        <property generated="never" lazy="false" name="eduLevel" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="EDU_LEVEL">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="marriage" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="MARRIAGE">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="politicalPosition" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="POLITICAL_POSITION">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="specialty" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="SPECIALTY">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="qq" optimistic-lock="true" type="string" unique="false">
+            <column length="32" name="QQ"/>
+        </property>
+        <property generated="never" lazy="false" name="wechat" optimistic-lock="true" type="string" unique="false">
+            <column length="32" name="WECHAT"/>
+        </property>
+        <property generated="never" lazy="false" name="email" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="EMAIL"/>
+        </property>
+        <property generated="never" lazy="false" name="photo" optimistic-lock="true" type="string" unique="false">
+            <column length="2000" name="PHOTO"/>
+        </property>
+        <property generated="never" lazy="false" name="telNumber" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="TEL_NUMBER"/>
+        </property>
+        <property generated="never" lazy="false" name="fixedNumber" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="FIXED_NUMBER"/>
+        </property>
+        <property generated="never" lazy="false" name="loginName" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="LOGIN_NAME" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="password" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="PASSWORD" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="hzPassword" optimistic-lock="true" type="string" unique="false">
+            <column length="128" name="HZ_PASSWORD"/>
+        </property>
+        <property generated="never" lazy="false" name="remarks" optimistic-lock="true" type="string" unique="false">
+            <column name="REMARKS">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="isAdmin" optimistic-lock="true" type="int" unique="false">
+            <column name="IS_ADMIN" not-null="true">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="sortId" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="SORT_ID">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="resourceId" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="RESOURCE_ID"/>
+        </property>
+        <property generated="never" lazy="false" name="objectId" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="OBJECT_ID"/>
+        </property>
+        <property generated="never" lazy="false" name="isEnable" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="IS_ENABLE">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="synState" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="SYN_STATE">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="delFlag" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="DEL_FLAG">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="createTime" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="19" name="CREATE_TIME">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="updateTime" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="19" name="UPDATE_TIME">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="isFlag" optimistic-lock="true" type="java.lang.Short" unique="false">
+            <column name="IS_FLAG"/>
+        </property>
+    </class>
+</hibernate-mapping>

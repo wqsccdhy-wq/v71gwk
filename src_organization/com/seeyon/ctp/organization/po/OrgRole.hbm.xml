@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.seeyon.ctp.organization.po">
+    <!-- 角色表 -->
+  <class
+    name="OrgRole"
+    table="ORG_ROLE"
+  >
+    <id
+      name="id"
+      type="long"
+      column="ID"
+    >
+      <generator class="assigned"/>
+    </id>
+
+        <!-- 名称 -->
+    <property
+      name="name"
+      column="NAME"
+      type="string"
+      not-null="false"
+      length="500"
+    />
+        <!-- 所属分类 -->
+    <property
+      name="category"
+      column="CATEGORY"
+      type="string"
+      not-null="false"
+      length="500"
+    />
+        <!-- 编号 -->
+    <property
+      name="code"
+      column="CODE"
+      type="string"
+      not-null="false"
+      length="500"
+    />
+        <!-- 固定角色、相对角色、自建角色 -->
+    <property
+      name="type"
+      column="TYPE"
+      type="integer"
+      not-null="false"
+      length="14"
+    />
+        <!-- 单位角色/部门角色 -->
+    <property
+      name="bond"
+      column="BOND"
+      type="integer"
+      not-null="false"
+      length="14"
+    />
+        <!-- 是否是基准角色 -->
+    <property
+      name="benchmark"
+      column="IS_BENCHMARK"
+      type="boolean"
+      not-null="false"
+      length="14"
+    />
+        <!-- 所属单位 -->
+    <property
+      name="orgAccountId"
+      column="ORG_ACCOUNT_ID"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+        <!-- 排序 -->
+    <property
+      name="sortId"
+      column="SORT_ID"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+        <!-- 是否启用 -->
+    <property
+      name="enable"
+      column="IS_ENABLE"
+      type="boolean"
+      not-null="false"
+      length="14"
+    />
+        <!-- 是否被删除 -->
+    <property
+      name="deleted"
+      column="IS_DELETED"
+      type="boolean"
+      not-null="false"
+      length="14"
+    />
+        <!-- 枚举：启用、停用、删除 -->
+    <property
+      name="status"
+      column="STATUS"
+      type="integer"
+      not-null="false"
+      length="14"
+    />
+        <!-- 创建时间 -->
+    <property
+      name="createTime"
+      column="CREATE_TIME"
+      type="timestamp"
+      not-null="false"
+      length="7"
+    />
+        <!-- 更新时间 -->
+    <property
+      name="updateTime"
+      column="UPDATE_TIME"
+      type="timestamp"
+      not-null="false"
+      length="7"
+    />
+        <!-- 描述 -->
+    <property
+      name="description"
+      column="DESCRIPTION"
+      type="string"
+      not-null="false"
+    />
+    
+     <property
+      name="externalType"
+      column="EXTERNAL_TYPE"
+      type="integer"
+      not-null="false"
+      length="14"
+    />
+
+
+  </class>
+</hibernate-mapping>

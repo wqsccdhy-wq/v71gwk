@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+
+	<bean id="orgUnitTempDao" class="com.seeyon.ctp.ociporg.dao.impl.OrgUnitTempDaoImpl" />
+	
+	<bean id="orgUserJoinTempDao" class="com.seeyon.ctp.ociporg.dao.impl.OrgUserJoinTempDaoImpl" />
+	
+	<bean id="orgDepartmentTempDao" class="com.seeyon.ctp.ociporg.dao.impl.OrgDepartmentTempDaoImpl" />
+	
+	<bean id="ocipResourceTempDao" class="com.seeyon.ctp.ociporg.dao.impl.OcipResourceTempDaoImpl" />
+	
+	<bean id="orgOcipTempLogDao" class="com.seeyon.ctp.ociporg.dao.impl.OrgOcipTempLogDaoImpl" />
+	
+	<bean id="orgRelationTempDao" class="com.seeyon.ctp.ociporg.dao.impl.OrgRelationTempDaoImpl" />
+	
+	<bean id="ocipOrgRoleDao" class="com.seeyon.ctp.ociporg.dao.impl.OcipOrgRoleDaoImpl" />
+	
+	<bean id="orgPostTempDao" class="com.seeyon.ctp.ociporg.dao.impl.OrgPostTempDaoImpl" />
+	
+	<bean id="orgUserLevelTempDao" class="com.seeyon.ctp.ociporg.dao.impl.OrgUserLevelTempDaoImpl" />
+	
+    
+</beans>

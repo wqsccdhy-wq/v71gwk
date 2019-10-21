@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.seeyon.apps.addressbook.po">
+	<class name="AddressBookSetScope" table="addressbook_set_scope" lazy="false">
+		<id name="id" type="long" column="id" length="20">
+			<generator class="assigned" />
+		</id>
+		<property name="addressbookSetId" type="long" column="addressbook_set_id" length="20" />
+		<property name="addressbookSetType" type="integer" column="addressbook_set_type" />
+		<property name="userId" type="long" column="user_id" length="20" />
+		<property name="userType" type="string" column="user_type" />
+	</class>
+</hibernate-mapping>

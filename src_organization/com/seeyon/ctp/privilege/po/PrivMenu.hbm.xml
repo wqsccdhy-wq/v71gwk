@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.seeyon.ctp.privilege.po">
+    <!-- 要能涵盖菜单资源、外部资源、内容脚本。 -->
+  <class
+    name="PrivMenu"
+    table="PRIV_MENU"
+  >
+    <id
+      name="id"
+      type="long"
+      column="ID"
+    >
+      <generator class="assigned"/>
+    </id>
+      <property
+              name="parentId"
+              column="PARENT_ID"
+              type="long"
+              not-null="false"
+              length="22"
+      />
+      <property
+              name="type"
+              column="MENU_TYPE"
+              type="integer"
+              not-null="false"
+              length="22"
+      />
+        <!-- 排序号 -->
+    <property
+      name="sortid"
+      column="SORTID"
+      type="integer"
+      not-null="false"
+      length="14"
+    />
+        <!-- 名称 -->
+    <property
+      name="name"
+      column="NAME"
+      type="string"
+      not-null="false"
+      length="255"
+    />
+        <!-- 插件id -->
+    <property
+      name="pluginid"
+      column="PLUGINID"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+        <!-- 更新时间 -->
+    <property
+      name="updatedate"
+      column="UPDATEDATE"
+      type="date"
+      not-null="false"
+      length="7"
+    />
+        <!-- 路径级别 -->
+    <property
+      name="path"
+      column="PATH"
+      type="string"
+      not-null="false"
+      length="255"
+    />
+        <!-- 更新人员 -->
+    <property
+      name="updateuserid"
+      column="UPDATEUSERID"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+        <!-- 创建人员 -->
+    <property
+      name="createuserid"
+      column="CREATEUSERID"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+        <!-- 显示图标 -->
+    <property
+      name="icon"
+      column="ICON"
+      type="string"
+      not-null="false"
+      length="255"
+    />
+        <!-- 创建时间 -->
+    <property
+      name="createdate"
+      column="CREATEDATE"
+      type="date"
+      not-null="false"
+      length="7"
+    />
+        <!-- 打开的目标窗口 -->
+    <property
+      name="target"
+      column="TARGET"
+      type="string"
+      not-null="false"
+      length="255"
+    />
+        <!-- 扩展字段5 -->
+    <property
+      name="ext5"
+      column="EXT5"
+      type="integer"
+      not-null="false"
+      length="14"
+    />
+        <!-- 扩展字段6 -->
+    <property
+      name="ext6"
+      column="EXT6"
+      type="integer"
+      not-null="false"
+      length="14"
+    />
+        <!-- 扩展字段1 -->
+    <property
+      name="ext1"
+      column="EXT1"
+      type="string"
+      not-null="false"
+      length="500"
+    />
+        <!-- 扩展字段2 -->
+    <property
+      name="ext2"
+      column="EXT2"
+      type="string"
+      not-null="false"
+      length="500"
+    />
+        <!-- 扩展字段3 -->
+    <property
+      name="ext3"
+      column="EXT3"
+      type="string"
+      not-null="false"
+      length="500"
+    />
+        <!-- 扩展字段4 -->
+    <property
+      name="ext4"
+      column="EXT4"
+      type="integer"
+      not-null="false"
+      length="14"
+    />
+    
+        <!-- 扩展字段7 -->
+    <property
+      name="ext7"
+      column="EXT7"
+      type="string"
+      not-null="false"
+      length="500"
+    />
+        <!-- 扩展字段8 -->
+    <property
+      name="ext8"
+      column="EXT8"
+      type="string"
+      not-null="false"
+      length="500"
+    />
+        <!-- 扩展字段9 -->
+    <property
+      name="ext9"
+      column="EXT9"
+      type="string"
+      not-null="false"
+      length="500"
+    />
+    
+        <!-- 扩展字段10 -->
+    <property
+      name="ext10"
+      column="EXT10"
+      type="string"
+      not-null="false"
+      length="500"
+    />
+        <!-- 扩展字段11 -->
+    <property
+      name="ext11"
+      column="EXT11"
+      type="string"
+      not-null="false"
+      length="500"
+    />
+        <!-- 扩展字段12 -->
+    <property
+      name="ext12"
+      column="EXT12"
+      type="integer"
+      not-null="false"
+      length="14"
+    />
+        <!-- 扩展字段13 -->
+    <property
+      name="ext13"
+      column="EXT13"
+      type="integer"
+      not-null="false"
+      length="14"
+    />
+        <!-- 扩展字段14 -->
+    <property
+      name="ext14"
+      column="EXT14"
+      type="integer"
+      not-null="false"
+      length="14"
+    />
+        <!-- 扩展字段15 -->
+    <property
+      name="ext15"
+      column="EXT15"
+      type="integer"
+      not-null="false"
+      length="14"
+    />
+        <!-- 扩展字段16 -->
+    <property
+      name="ext16"
+      column="EXT16"
+      type="integer"
+      not-null="false"
+      length="14"
+    />
+        <!-- 扩展字段17 -->
+    <property
+      name="ext17"
+      column="ext17"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+        <!-- 扩展字段18 -->
+    <property
+      name="ext18"
+      column="ext18"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+        <!-- 扩展字段19 -->
+    <property
+      name="ext19"
+      column="ext19"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+        <!-- 扩展字段20 -->
+    <property
+      name="ext20"
+      column="ext20"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+        <!-- 扩展字段21 -->
+    <property
+      name="ext21"
+      column="ext21"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+    
+    <property
+      name="control"
+      column="IS_CONTROL"
+      type="boolean"
+      not-null="false"
+      length="14"
+    />
+        <!-- 0显示1不显示 -->
+    <property
+      name="show"
+      column="IS_SHOW"
+      type="boolean"
+      not-null="false"
+      length="14"
+    />
+     <!-- 0不可勾选 1可勾选 -->
+    <property
+      name="check"
+      column="IS_CHECK"
+      type="boolean"
+      not-null="false"
+      length="14"
+    />
+    
+     <!-- 入口资源 -->
+    <property
+      name="enterResource"
+      column="ENTER_RESOURCE"
+      type="integer"
+      not-null="false"
+      length="14"
+    />
+        <!-- 链接 -->
+    <property
+      name="resourceNavurl"
+      column="RESOURCE_NAVURL"
+      type="string"
+      not-null="false"
+      length="255"
+    />
+        
+        <!-- 模块ID -->
+    <property
+      name="resourceModuleid"
+      column="RESOURCE_MODULEID"
+      type="string"
+      not-null="false"
+      length="255"
+    />
+  
+      <property
+      name="resourceCode"
+      column="RESOURCE_Code"
+      type="string"
+      not-null="false"
+      length="255"
+    />  
+    
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-autowire="byName">
+
+	<bean id="orgUnitTempManager" class="com.seeyon.ctp.ociporg.manager.impl.OrgUnitTempManagerImpl" />
+	
+	<bean id="orgUserJoinTempManager" class="com.seeyon.ctp.ociporg.manager.impl.OrgUserJoinTempManagerImpl" />
+	
+	<bean id="orgDepartmentTempManager" class="com.seeyon.ctp.ociporg.manager.impl.OrgDepartmentTempManagerImpl" />
+	
+	<bean id="ocipUnitManagerImpl" class="com.seeyon.ctp.ociporg.manager.impl.OcipUnitManagerImpl" />
+	
+	<bean id="ocipDepartmentManagerImpl" class="com.seeyon.ctp.ociporg.manager.impl.OcipDepartmentManagerImpl" />
+	
+	<bean id="ocipMemberManagerImpl" class="com.seeyon.ctp.ociporg.manager.impl.OcipMemberManagerImpl" />
+	
+	<bean id="ocipResourceTempManager" class="com.seeyon.ctp.ociporg.manager.impl.OcipResourceTempManagerImpl" />
+	
+	<bean id="orgOcipTempLogManager" class="com.seeyon.ctp.ociporg.manager.impl.OrgOcipTempLogManagerImpl" />
+	
+	<bean id="orgRelationTempManager" class="com.seeyon.ctp.ociporg.manager.impl.OrgRelationTempManagerImpl" />
+	
+	<bean id="orgPostTempManager" class="com.seeyon.ctp.ociporg.manager.impl.OrgPostTempManagerImpl" />
+	
+	<bean id="ocipPostManagerImpl" class="com.seeyon.ctp.ociporg.manager.impl.OcipPostManagerImpl" />
+	
+	<bean id="orgUserLevelTempManager" class="com.seeyon.ctp.ociporg.manager.impl.OrgUserLevelTempManagerImpl" />
+	
+	<bean id="ocipLevelManagerImpl" class="com.seeyon.ctp.ociporg.manager.impl.OcipLevelManagerImpl" />
+	
+</beans>

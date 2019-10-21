@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.seeyon.apps.addressbook.po">
+	<class name="AddressBookSet" table="addressbook_set" lazy="false">
+		<id name="id" type="long" column="id" length="20">
+			<generator class="assigned" />
+		</id>
+		<property name="viewScope" type="integer" column="view_scope" />
+		<property name="keyInfo" type="integer" column="key_info" />
+		<property name="keyInfoType" type="integer" column="key_info_type" />
+		<property name="exportPrint" type="integer" column="export_print" />
+		<property name="displayColumn" type="string" column="display_column" />
+		<property name="createDate" type="timestamp" column="create_date" />
+		<property name="updateDate" type="timestamp" column="update_date" />
+		<property name="accountId" type="long" column="account_id" length="20" />
+	</class>
+</hibernate-mapping>

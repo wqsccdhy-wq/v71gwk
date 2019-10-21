@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+	<id>ociporg</id>
+	<name>ociporg</name>
+	<!-- 临时定义类别编号，以后可以修改 -->
+	<category>190808</category>
+</plugin>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.seeyon.ctp.privilege.po">
+    <!-- 角色资源关系 -->
+  <class
+    name="PrivRoleMenu"
+    table="PRIV_ROLE_MENU"
+  >
+    <id
+      name="id"
+      type="long"
+      column="ID"
+    >
+      <generator class="assigned"/>
+    </id>
+
+        <!-- 角色ID -->
+    <property
+      name="roleid"
+      column="ROLEID"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+        <!-- 菜单ID -->
+    <property
+      name="menuid"
+      column="MENUID"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+    <!-- 是否可修改 -->
+    <property
+      name="modifiable"
+      column="MODIFIABLE"
+      type="boolean"
+      not-null="false"
+      length="14"
+    />
+	
+    
+ <!-- 扩展字段1 -->
+    <property
+      name="ext1"
+      column="EXT1"
+      type="string"
+      not-null="false"
+      length="500"
+    />
+        <!-- 扩展字段2 -->
+    <property
+      name="ext2"
+      column="EXT2"
+      type="string"
+      not-null="false"
+      length="500"
+    />
+        <!-- 扩展字段3 -->
+    <property
+      name="ext3"
+      column="EXT3"
+      type="string"
+      not-null="false"
+      length="500"
+    />
+        <!-- 扩展字段4 -->
+    <property
+      name="ext4"
+      column="EXT4"
+      type="integer"
+      not-null="false"
+      length="14"
+    />
+        <!-- 扩展字段5 -->
+    <property
+      name="ext5"
+      column="EXT5"
+      type="integer"
+      not-null="false"
+      length="14"
+    />
+        <!-- 扩展字段6 -->
+    <property
+      name="ext6"
+      column="EXT6"
+      type="integer"
+      not-null="false"
+      length="14"
+    />
+  </class>
+</hibernate-mapping>

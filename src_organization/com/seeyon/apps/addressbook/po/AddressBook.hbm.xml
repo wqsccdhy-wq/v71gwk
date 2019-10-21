@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.seeyon.apps.addressbook.po">
+    <!-- 人 -->
+  <class
+    name="AddressBook"
+    table="AddressBook"
+  >
+    <id name="id" type="long" column="ID">
+      <generator class="assigned"/>
+    </id>
+     
+    <!-- 人员id -->
+    <property
+      name="memberId"
+      column="MEMBER_ID"
+      type="long"
+      not-null="true"
+      length="22"
+    />
+      
+     <!-- 创建日期 -->
+    <property
+      name="createDate"
+      column="CREATE_DATE"
+      type="timestamp"
+      not-null="false"
+      length="7"
+    />
+        <!-- 更新时间 -->
+    <property
+      name="updateDate"
+      column="UPDATE_DATE"
+      type="timestamp"
+      not-null="false"
+      length="7"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr1"
+      column="EXT_ATTR_1"
+      type="string"
+      not-null="false"
+      length="1024"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr2"
+      column="EXT_ATTR_2"
+      type="string"
+      not-null="false"
+      length="1024"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr3"
+      column="EXT_ATTR_3"
+      type="string"
+      not-null="false"
+      length="1024"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr4"
+      column="EXT_ATTR_4"
+      type="string"
+      not-null="false"
+      length="1024"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr5"
+      column="EXT_ATTR_5"
+      type="string"
+      not-null="false"
+      length="1024"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr6"
+      column="EXT_ATTR_6"
+      type="string"
+      not-null="false"
+      length="1024"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr7"
+      column="EXT_ATTR_7"
+      type="string"
+      not-null="false"
+      length="1024"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr8"
+      column="EXT_ATTR_8"
+      type="string"
+      not-null="false"
+      length="1024"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr9"
+      column="EXT_ATTR_9"
+      type="string"
+      not-null="false"
+      length="1024"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr10"
+      column="EXT_ATTR_10"
+      type="string"
+      not-null="false"
+      length="1024"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr11"
+      column="EXT_ATTR_11"
+      type="double"
+      not-null="false"
+      length="22"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr12"
+      column="EXT_ATTR_12"
+      type="double"
+      not-null="false"
+      length="22"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr13"
+      column="EXT_ATTR_13"
+      type="double"
+      not-null="false"
+      length="22"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr14"
+      column="EXT_ATTR_14"
+      type="double"
+      not-null="false"
+      length="22"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr15"
+      column="EXT_ATTR_15"
+      type="double"
+      not-null="false"
+      length="14"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr16"
+      column="EXT_ATTR_16"
+      type="double"
+      not-null="false"
+      length="22"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr17"
+      column="EXT_ATTR_17"
+      type="double"
+      not-null="false"
+      length="22"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr18"
+      column="EXT_ATTR_18"
+      type="double"
+      not-null="false"
+      length="22"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr19"
+      column="EXT_ATTR_19"
+      type="double"
+      not-null="false"
+      length="22"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr20"
+      column="EXT_ATTR_20"
+      type="double"
+      not-null="false"
+      length="22"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr21"
+      column="EXT_ATTR_21"
+      type="timestamp"
+      not-null="false"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr22"
+      column="EXT_ATTR_22"
+      type="timestamp"
+      not-null="false"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr23"
+      column="EXT_ATTR_23"
+      type="timestamp"
+      not-null="false"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr24"
+      column="EXT_ATTR_24"
+      type="timestamp"
+      not-null="false"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr25"
+      column="EXT_ATTR_25"
+      type="timestamp"
+      not-null="false"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr26"
+      column="EXT_ATTR_26"
+      type="timestamp"
+      not-null="false"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr27"
+      column="EXT_ATTR_27"
+      type="timestamp"
+      not-null="false"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr28"
+      column="EXT_ATTR_28"
+      type="timestamp"
+      not-null="false"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr29"
+      column="EXT_ATTR_29"
+      type="timestamp"
+      not-null="false"
+    />
+        <!-- 预留字段 -->
+    <property
+      name="extAttr30"
+      column="EXT_ATTR_30"
+      type="timestamp"
+      not-null="false"
+    />
+    
+   <!-- 枚举字段 -->
+    <property
+      name="extAttr31"
+      column="EXT_ATTR_31"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    <property
+      name="extAttr32"
+      column="EXT_ATTR_32"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    <property
+      name="extAttr33"
+      column="EXT_ATTR_33"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    <property
+      name="extAttr34"
+      column="EXT_ATTR_34"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    <property
+      name="extAttr35"
+      column="EXT_ATTR_35"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    <property
+      name="extAttr36"
+      column="EXT_ATTR_36"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    <property
+      name="extAttr37"
+      column="EXT_ATTR_37"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    <property
+      name="extAttr38"
+      column="EXT_ATTR_38"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    <property
+      name="extAttr39"
+      column="EXT_ATTR_39"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    <property
+      name="extAttr40"
+      column="EXT_ATTR_40"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    
+	<!-- 选人字段 -->
+    <property
+      name="extAttr41"
+      column="EXT_ATTR_41"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    <property
+      name="extAttr42"
+      column="EXT_ATTR_42"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    <property
+      name="extAttr43"
+      column="EXT_ATTR_43"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    <property
+      name="extAttr44"
+      column="EXT_ATTR_44"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    <property
+      name="extAttr45"
+      column="EXT_ATTR_45"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    <property
+      name="extAttr46"
+      column="EXT_ATTR_46"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    <property
+      name="extAttr47"
+      column="EXT_ATTR_47"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    <property
+      name="extAttr48"
+      column="EXT_ATTR_48"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    <property
+      name="extAttr49"
+      column="EXT_ATTR_49"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    <property
+      name="extAttr50"
+      column="EXT_ATTR_50"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    
+	<!-- 选部门字段 -->
+    <property
+      name="extAttr51"
+      column="EXT_ATTR_51"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    <property
+      name="extAttr52"
+      column="EXT_ATTR_52"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    <property
+      name="extAttr53"
+      column="EXT_ATTR_53"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    <property
+      name="extAttr54"
+      column="EXT_ATTR_54"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    <property
+      name="extAttr55"
+      column="EXT_ATTR_55"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    <property
+      name="extAttr56"
+      column="EXT_ATTR_56"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    <property
+      name="extAttr57"
+      column="EXT_ATTR_57"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    <property
+      name="extAttr58"
+      column="EXT_ATTR_58"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    <property
+      name="extAttr59"
+      column="EXT_ATTR_59"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+    <property
+      name="extAttr60"
+      column="EXT_ATTR_60"
+      type="string"
+      not-null="false"
+      length="50"
+    />
+
+  </class>
+</hibernate-mapping>

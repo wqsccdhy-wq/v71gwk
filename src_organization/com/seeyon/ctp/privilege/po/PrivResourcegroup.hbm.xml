@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.seeyon.ctp.privilege.po">
+    <!-- 资源组 -->
+  <class
+    name="PrivResourcegroup"
+    table="PRIV_RESOURCEGROUP"
+  >
+    <id
+      name="id"
+      type="long"
+      column="ID"
+    >
+      <generator class="assigned"/>
+    </id>
+
+        <!-- 名称 -->
+    <property
+      name="name"
+      column="NAME"
+      type="string"
+      not-null="false"
+      length="255"
+    />
+
+
+  </class>
+</hibernate-mapping>

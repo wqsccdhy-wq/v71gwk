@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.seeyon.ctp.organization.po">
+    <!-- 岗位表 -->
+  <class
+    name="OrgPost"
+    table="ORG_POST"
+  >
+    <id
+      name="id"
+      type="long"
+      column="ID"
+    >
+      <generator class="assigned"/>
+    </id>
+
+        <!-- 名称 -->
+    <property
+      name="name"
+      column="NAME"
+      type="string"
+      not-null="false"
+      length="500"
+    />
+        <!-- 编码 -->
+    <property
+      name="code"
+      column="CODE"
+      type="string"
+      not-null="false"
+      length="500"
+    />
+        <!-- 是否启用 -->
+    <property
+      name="enable"
+      column="IS_ENABLE"
+      type="boolean"
+      not-null="false"
+      length="14"
+    />
+        <!-- 类型 -->
+    <property
+      name="type"
+      column="TYPE"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+        <!-- 排序 -->
+    <property
+      name="sortId"
+      column="SORT_ID"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+        <!-- 创建时间 -->
+    <property
+      name="createTime"
+      column="CREATE_TIME"
+      type="timestamp"
+      not-null="false"
+      length="7"
+    />
+        <!-- 更改时间 -->
+    <property
+      name="updateTime"
+      column="UPDATE_TIME"
+      type="timestamp"
+      not-null="false"
+      length="7"
+    />
+        <!-- 描述 -->
+    <property
+      name="description"
+      column="DESCRIPTION"
+      type="string"
+      not-null="false"
+    />
+        <!-- 所属单位 -->
+    <property
+      name="orgAccountId"
+      column="ORG_ACCOUNT_ID"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+        <!-- 是否被删除 -->
+    <property
+      name="deleted"
+      column="IS_DELETED"
+      type="boolean"
+      not-null="false"
+      length="14"
+    />
+        <!-- 状态 -->
+    <property
+      name="status"
+      column="STATUS"
+      type="integer"
+      not-null="false"
+      length="14"
+    />
+    
+    <property
+      name="externalType"
+      column="EXTERNAL_TYPE"
+      type="integer"
+      not-null="false"
+      length="14"
+    />
+
+
+  </class>
+</hibernate-mapping>

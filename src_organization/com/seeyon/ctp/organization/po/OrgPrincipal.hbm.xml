@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.seeyon.ctp.organization.po">
+    <!-- 人员账号表 -->
+  <class
+    name="OrgPrincipal"
+    table="ORG_PRINCIPAL"
+  >
+    <id
+      name="id"
+      type="long"
+      column="ID"
+    >
+      <generator class="assigned"/>
+    </id>
+
+        <!-- 登录名 -->
+    <property
+      name="loginName"
+      column="LOGIN_NAME"
+      type="string"
+      not-null="false"
+      length="500"
+    />
+        <!-- 密码值 -->
+    <property
+      name="credentialValue"
+      column="CREDENTIAL_VALUE"
+      type="string"
+      not-null="false"
+      length="500"
+    />
+        <!-- 加密策略 -->
+    <property
+      name="className"
+      column="CLASS_NAME"
+      type="string"
+      not-null="false"
+      length="500"
+    />
+        <!-- 密码超期时间 -->
+    <property
+      name="expirationDate"
+      column="EXPIRATION_DATE"
+      type="timestamp"
+      not-null="false"
+      length="7"
+    />
+        <!-- 人员Id -->
+    <property
+      name="memberId"
+      column="MEMBER_ID"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+        <!-- 是否有效 -->
+    <property
+      name="enable"
+      column="IS_ENABLE"
+      type="boolean"
+      not-null="false"
+      length="14"
+    />
+        <!-- 创建时间 -->
+    <property
+      name="createTime"
+      column="CREATE_TIME"
+      type="timestamp"
+      not-null="false"
+      length="7"
+    />
+        <!-- 更新时间 -->
+    <property
+      name="updateTime"
+      column="UPDATE_TIME"
+      type="timestamp"
+      not-null="false"
+      length="7"
+    />
+
+
+  </class>
+</hibernate-mapping>

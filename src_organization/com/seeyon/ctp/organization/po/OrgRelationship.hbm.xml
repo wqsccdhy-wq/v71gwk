@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.seeyon.ctp.organization.po">
+    <!-- 关系表 -->
+  <class
+    name="OrgRelationship"
+    table="ORG_RELATIONSHIP"
+  >
+    <id
+      name="id"
+      type="long"
+      column="ID"
+    >
+      <generator class="assigned"/>
+    </id>
+
+        <!-- 关系类型 -->
+    <property
+      name="type"
+      column="TYPE"
+      type="string"
+      not-null="false"
+      length="500"
+    />
+        <!-- 资源id -->
+    <property
+      name="sourceId"
+      column="SOURCE_ID"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+        <!-- 目的 -->
+    <property
+      name="objective0Id"
+      column="OBJECTIVE0_ID"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+    <property
+      name="objective1Id"
+      column="OBJECTIVE1_ID"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+        <!-- 目的2 -->
+    <property
+      name="objective2Id"
+      column="OBJECTIVE2_ID"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+        <!-- 目的3 -->
+    <property
+      name="objective3Id"
+      column="OBJECTIVE3_ID"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+        <!-- 目的4 -->
+    <property
+      name="objective4Id"
+      column="OBJECTIVE4_ID"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+    <property
+      name="objective5Id"
+      column="OBJECTIVE5_ID"
+      type="string"
+      not-null="false"
+      length="500"
+    />
+    <property
+      name="objective6Id"
+      column="OBJECTIVE6_ID"
+      type="string"
+      not-null="false"
+      length="500"
+    />
+    <property
+      name="objective7Id"
+      column="OBJECTIVE7_ID"
+      type="string"
+      not-null="false"
+      length="1024"
+    />
+        <!-- 排序 -->
+    <property
+      name="sortId"
+      column="SORT_ID"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+        <!-- 所属单位 -->
+    <property
+      name="orgAccountId"
+      column="ORG_ACCOUNT_ID"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+        <!-- 创建时间 -->
+    <property
+      name="createTime"
+      column="CREATE_TIME"
+      type="timestamp"
+      not-null="false"
+      length="7"
+    />
+        <!-- 更新时间 -->
+    <property
+      name="updateTime"
+      column="UPDATE_TIME"
+      type="timestamp"
+      not-null="false"
+      length="7"
+    />
+
+
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.seeyon.ctp.ociporg.po.OrgUnitTemp" table="org_unit_temp">
+        <id name="id" type="string">
+            <column length="64" name="ID"/>
+            <generator class="uuid"/>
+        </id>
+        <property generated="never" lazy="false" name="name" optimistic-lock="true" type="string" unique="false">
+            <column name="NAME">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="aliasName" optimistic-lock="true" type="string" unique="false">
+            <column name="ALIAS_NAME">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="foreignName" optimistic-lock="true" type="string" unique="false">
+            <column name="FOREIGN_NAME">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="code" optimistic-lock="true" type="string" unique="false">
+            <column length="32" name="CODE"/>
+        </property>
+        <property generated="never" lazy="false" name="shortName" optimistic-lock="true" type="string" unique="false">
+            <column length="32" name="SHORT_NAME"/>
+        </property>
+        <property generated="never" lazy="false" name="type" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="TYPE">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="orgOcipLevel" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="ORG_OCIP_LEVEL"/>
+        </property>
+        <property generated="never" lazy="false" name="path" optimistic-lock="true" type="string" unique="false">
+            <column name="PATH"/>
+        </property>
+        <property generated="never" lazy="false" name="majorUserId" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="MAJOR_USER_ID"/>
+        </property>
+        <property generated="never" lazy="false" name="parentId" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="PARENT_ID"/>
+        </property>
+        <property generated="never" lazy="false" name="adminId" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="ADMIN_ID"/>
+        </property>
+        <property generated="never" lazy="false" name="resourceId" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="RESOURCE_ID"/>
+        </property>
+        <property generated="never" lazy="false" name="objectId" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="OBJECT_ID"/>
+        </property>
+        <property generated="never" lazy="false" name="sortId" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="SORT_ID">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="isEnable" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="IS_ENABLE">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="orgPlatformUnitId" optimistic-lock="true" type="string" unique="false">
+            <column length="64" name="ORG_PLATFORM_UNIT_ID"/>
+        </property>
+        <property generated="never" lazy="false" name="logicPath" optimistic-lock="true" type="string" unique="false">
+            <column name="LOGIC_PATH"/>
+        </property>
+        <property generated="never" lazy="false" name="synState" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="SYN_STATE">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="delFlag" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="DEL_FLAG">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="createTime" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="19" name="CREATE_TIME">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="updateTime" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="19" name="UPDATE_TIME">
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="isFlag" optimistic-lock="true" type="java.lang.Short" unique="false">
+            <column name="IS_FLAG"/>
+        </property>
+        <property generated="never" lazy="false" name="grade" optimistic-lock="true" type="java.lang.Short" unique="false">
+            <column name="GRADE"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.seeyon.ctp.organization.po">
+    <!-- 组 -->
+  <class
+    name="OrgTeam"
+    table="ORG_TEAM"
+  >
+    <id
+      name="id"
+      type="long"
+      column="ID"
+    >
+      <generator class="assigned"/>
+    </id>
+
+        <!-- 名称 -->
+    <property
+      name="name"
+      column="NAME"
+      type="string"
+      not-null="false"
+      length="500"
+    />
+        <!-- 编号 -->
+    <property
+      name="code"
+      column="CODE"
+      type="string"
+      not-null="false"
+      length="500"
+    />
+        <!-- 类型 -->
+    <property
+      name="type"
+      column="TYPE"
+      type="integer"
+      not-null="false"
+      length="14"
+    />
+        <!-- 所属主体 -->
+    <property
+      name="ownerId"
+      column="OWNER_ID"
+      type="long"
+      not-null="true"
+      length="22"
+    />
+     <!-- 创建主体 -->
+    <property
+      name="createrId"
+      column="CREATER_ID"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+        <!-- 是否启用 -->
+    <property
+      name="enable"
+      column="IS_ENABLE"
+      type="boolean"
+      not-null="false"
+      length="14"
+    />
+        <!-- 是否被删除 -->
+    <property
+      name="deleted"
+      column="IS_DELETED"
+      type="boolean"
+      not-null="false"
+      length="14"
+    />
+        <!-- 状态 -->
+    <property
+      name="status"
+      column="STATUS"
+      type="integer"
+      not-null="false"
+      length="14"
+    />
+        <!-- 排序 -->
+    <property
+      name="sortId"
+      column="SORT_ID"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+        <!-- 所属单位 -->
+    <property
+      name="orgAccountId"
+      column="ORG_ACCOUNT_ID"
+      type="long"
+      not-null="false"
+      length="22"
+    />
+        <!-- 创建时间 -->
+    <property
+      name="createTime"
+      column="CREATE_TIME"
+      type="timestamp"
+      not-null="false"
+      length="7"
+    />
+        <!-- 修改时间 -->
+    <property
+      name="updateTime"
+      column="UPDATE_TIME"
+      type="timestamp"
+      not-null="false"
+      length="7"
+    />
+        <!-- 描述 -->
+    <property
+      name="description"
+      column="DESCRIPTION"
+      type="string"
+      not-null="false"
+    />
+    
+    <property
+      name="externalType"
+      column="EXTERNAL_TYPE"
+      type="integer"
+      not-null="false"
+      length="14"
+    />
+
+  </class>
+</hibernate-mapping>
