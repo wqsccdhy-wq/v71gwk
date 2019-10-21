@@ -6,6 +6,9 @@ import java.security.NoSuchProviderException;
 import com.seeyon.ctp.common.security.MessageEncoder;
 import com.seeyon.ctp.common.security.SecurityHelper;
 
+/**
+ * 测试文件
+ */
 public class Test {
 
 	public static void main(String[] args) throws NoSuchAlgorithmException, NoSuchProviderException {
