@@ -2,6 +2,9 @@ package com.seeyon.ctp.ociporg.manager.impl;
 
 import java.util.List;
 
+import com.seeyon.ctp.ociporg.manager.OrgUnitTempManager;
+import com.seeyon.ctp.ociporg.po.OrgUnitTemp;
+import com.seeyon.ctp.util.Strings;
 import org.apache.log4j.Logger;
 import org.springframework.util.CollectionUtils;
 
@@ -19,6 +22,8 @@ public class OcipLevelManagerImpl extends AbsOcipOrgManager<OrgUserLevelTemp> {
     private static final Logger LOGGER = Logger.getLogger(OcipLevelManagerImpl.class);
 
     private OrgUserLevelTempManager orgUserLevelTempManager;
+
+    private OrgUnitTempManager orgUnitTempManager;
 
     @Override
     public void importOrg(String resourceId, FlipInfo flipInfo) {
@@ -68,6 +73,9 @@ public class OcipLevelManagerImpl extends AbsOcipOrgManager<OrgUserLevelTemp> {
         boolean success = false;
         try {
             V3xOrgLevel orgLevel = initOrgLevel(t);
+            if (orgLevel == null) {
+                return;
+            }
             OrganizationMessage message = orgManagerDirect.addLevel(orgLevel);
             success = message.isSuccess();
             if (success) {
@@ -111,10 +119,33 @@ public class OcipLevelManagerImpl extends AbsOcipOrgManager<OrgUserLevelTemp> {
         Integer sortId = t.getSortId();
         Integer isEnable = t.getIsEnable();
         Integer delFlag = t.getDelFlag();
+        String name = t.getName();
+        String resourceId = t.getResourceId();
+
+        if (Strings.isEmpty(unitId)) {
+            String info = "职务:" + name + "|id:" + id + "|resourceId:" + resourceId + ",unitId为空，导入失败!!";
+            LOGGER.info(info);
+            addLog(info, resourceId, id, name, "POST", false);
+            return null;
+        }
+        OrgUnitTemp unitTemp = orgUnitTempManager.findOrgUnitTempById(unitId);
+        if (unitTemp == null) {
+            String info = "职务:" + name + "|id:" + id + "|resourceId:" + resourceId + ",所属单位不存在，导入失败!!";
+            LOGGER.info(info);
+            addLog(info, resourceId, id, name, "POST", false);
+            return null;
+        }
+        String objectId = unitTemp.getObjectId();
+        if (Strings.isEmpty(objectId)) {
+            String info = "职务:" + name + "|id:" + id + "|resourceId:" + resourceId + ",objectId不存在，导入失败!!";
+            LOGGER.info(info);
+            addLog(info, resourceId, id, name, "POST", false);
+            return null;
+        }
 
         orgLevel.setId(Long.valueOf(id));
         orgLevel.setName(t.getName());
-        orgLevel.setOrgAccountId(Long.valueOf(unitId));
+        orgLevel.setOrgAccountId(Long.valueOf(objectId));
         orgLevel.setSortId(Long.valueOf(sortId));
 
         if (0 == isEnable) {
@@ -143,4 +174,11 @@ public class OcipLevelManagerImpl extends AbsOcipOrgManager<OrgUserLevelTemp> {
         this.orgUserLevelTempManager = orgUserLevelTempManager;
     }
 
+    public OrgUnitTempManager getOrgUnitTempManager() {
+        return orgUnitTempManager;
+    }
+
+    public void setOrgUnitTempManager(OrgUnitTempManager orgUnitTempManager) {
+        this.orgUnitTempManager = orgUnitTempManager;
+    }
 }

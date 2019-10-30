@@ -2,6 +2,9 @@ package com.seeyon.ctp.ociporg.manager.impl;
 
 import java.util.List;
 
+import com.seeyon.ctp.ociporg.manager.OrgUnitTempManager;
+import com.seeyon.ctp.ociporg.po.OrgUnitTemp;
+import com.seeyon.ctp.util.Strings;
 import org.apache.log4j.Logger;
 import org.springframework.util.CollectionUtils;
 
@@ -24,6 +27,8 @@ public class OcipPostManagerImpl extends AbsOcipOrgManager<OrgPostTemp> {
     private static final Logger LOGGER = Logger.getLogger(OcipPostManagerImpl.class);
 
     private OrgPostTempManager orgPostTempManager;
+
+    private OrgUnitTempManager orgUnitTempManager;
 
     @Override
     public void importOrg(String resourceId, FlipInfo flipInfo) {
@@ -72,6 +77,9 @@ public class OcipPostManagerImpl extends AbsOcipOrgManager<OrgPostTemp> {
         boolean success = false;
         try {
             V3xOrgPost post = initPost(t);
+            if (post == null) {
+                return;
+            }
             OrganizationMessage message = orgManagerDirect.addPost(post);
             success = message.isSuccess();
             if (success) {
@@ -100,7 +108,11 @@ public class OcipPostManagerImpl extends AbsOcipOrgManager<OrgPostTemp> {
         } finally {
             try {
                 orgPostTempManager.updateOrgPostTemp(t);
-                addLog(messageStatus.toString(), resourceId, id, name, "POST", success);
+                String msg = "";
+                if (messageStatus != null) {
+                    msg = messageStatus.toString();
+                }
+                addLog(msg, resourceId, id, name, "POST", success);
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -113,8 +125,30 @@ public class OcipPostManagerImpl extends AbsOcipOrgManager<OrgPostTemp> {
         V3xOrgPost post = new V3xOrgPost();
         String unitId = t.getUnitId();
         String id = t.getObjectId();
-        post.setName(t.getName());
-        post.setOrgAccountId(Long.valueOf(unitId));
+        String name = t.getName();
+        String resourceId = t.getResourceId();
+        post.setName(name);
+        if (Strings.isEmpty(unitId)) {
+            String info = "岗位:" + name + "|id:" + id + "|resourceId:" + resourceId + ",unitId为空，导入失败!!";
+            LOGGER.info(info);
+            addLog(info, resourceId, id, name, "POST", false);
+            return null;
+        }
+        OrgUnitTemp unitTemp = orgUnitTempManager.findOrgUnitTempById(unitId);
+        if (unitTemp == null) {
+            String info = "岗位:" + name + "|id:" + id + "|resourceId:" + resourceId + ",所属单位不存在，导入失败!!";
+            LOGGER.info(info);
+            addLog(info, resourceId, id, name, "POST", false);
+            return null;
+        }
+        String objectId = unitTemp.getObjectId();
+        if (Strings.isEmpty(objectId)) {
+            String info = "岗位:" + name + "|id:" + id + "|resourceId:" + resourceId + ",objectId不存在，导入失败!!";
+            LOGGER.info(info);
+            addLog(info, resourceId, id, name, "POST", false);
+            return null;
+        }
+        post.setOrgAccountId(Long.valueOf(objectId));
         post.setId(Long.valueOf(id));
         post.setSortId(Long.valueOf(t.getSortId()));
 
@@ -146,4 +180,11 @@ public class OcipPostManagerImpl extends AbsOcipOrgManager<OrgPostTemp> {
         this.orgPostTempManager = orgPostTempManager;
     }
 
+    public OrgUnitTempManager getOrgUnitTempManager() {
+        return orgUnitTempManager;
+    }
+
+    public void setOrgUnitTempManager(OrgUnitTempManager orgUnitTempManager) {
+        this.orgUnitTempManager = orgUnitTempManager;
+    }
 }
