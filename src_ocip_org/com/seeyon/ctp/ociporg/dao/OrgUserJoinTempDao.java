@@ -7,12 +7,12 @@ import com.seeyon.ctp.util.FlipInfo;
 
 public interface OrgUserJoinTempDao {
 
-	public OrgUserJoinTemp findOrgUserJoinTempById(String id);
+    public OrgUserJoinTemp findOrgUserJoinTempById(String id);
 
-	public List<OrgUserJoinTemp> findOrgUserJoinTempByGrade(Short isFlag, String resourceId, FlipInfo flipInfo);
+    public List<OrgUserJoinTemp> findOrgUserJoinTempByGrade(Short isFlag, String resourceId, FlipInfo flipInfo);
 
-	public Long getCount(Short isFlag, String resourceId);
+    public Long getCount(Short isFlag, String resourceId);
 
-	public void updatOrgUserJoinTemp(OrgUserJoinTemp orgUserJoinTemp) throws Exception;
+    public void updatOrgUserJoinTemp(OrgUserJoinTemp orgUserJoinTemp) throws Exception;
 
 }

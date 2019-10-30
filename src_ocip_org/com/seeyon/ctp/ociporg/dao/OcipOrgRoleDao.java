@@ -5,12 +5,12 @@ import com.seeyon.ctp.organization.po.OrgPost;
 
 public interface OcipOrgRoleDao {
 
-	public OrgPost getPostById(Long id);
+    public OrgPost getPostById(Long id);
 
-	public OrgPost getPostByName(String name, Long accountid, String id);
+    public OrgPost getPostByName(String name, Long accountid, String id);
 
-	public OrgLevel getLevelById(Long id);
+    public OrgLevel getLevelById(Long id);
 
-	public OrgLevel getLevelByName(String name, Long accountid, String id);
+    public OrgLevel getLevelByName(String name, Long accountid, String id);
 
 }

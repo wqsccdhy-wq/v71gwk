@@ -6,20 +6,20 @@ import com.seeyon.ctp.ociporg.po.OrgOcipTempLog;
 
 public class OrgOcipTempLogManagerImpl implements OrgOcipTempLogManager {
 
-	private OrgOcipTempLogDao orgOcipTempLogDao;
+    private OrgOcipTempLogDao orgOcipTempLogDao;
 
-	@Override
-	public void insertLog(OrgOcipTempLog log) {
-		orgOcipTempLogDao.insertLog(log);
+    @Override
+    public void insertLog(OrgOcipTempLog log) {
+        orgOcipTempLogDao.insertLog(log);
 
-	}
+    }
 
-	public OrgOcipTempLogDao getOrgOcipTempLogDao() {
-		return orgOcipTempLogDao;
-	}
+    public OrgOcipTempLogDao getOrgOcipTempLogDao() {
+        return orgOcipTempLogDao;
+    }
 
-	public void setOrgOcipTempLogDao(OrgOcipTempLogDao orgOcipTempLogDao) {
-		this.orgOcipTempLogDao = orgOcipTempLogDao;
-	}
+    public void setOrgOcipTempLogDao(OrgOcipTempLogDao orgOcipTempLogDao) {
+        this.orgOcipTempLogDao = orgOcipTempLogDao;
+    }
 
 }

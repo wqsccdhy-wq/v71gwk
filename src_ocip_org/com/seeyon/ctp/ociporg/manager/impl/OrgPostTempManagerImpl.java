@@ -9,35 +9,34 @@ import com.seeyon.ctp.util.FlipInfo;
 
 public class OrgPostTempManagerImpl implements OrgPostTempManager {
 
-	private OrgPostTempDao orgPostTempDao;
+    private OrgPostTempDao orgPostTempDao;
 
-	@Override
-	public OrgPostTemp findOrgPostTempById(String id) {
-		return orgPostTempDao.findOrgPostTempById(id);
-	}
+    @Override
+    public OrgPostTemp findOrgPostTempById(String id) {
+        return orgPostTempDao.findOrgPostTempById(id);
+    }
 
-	@Override
-	public List<OrgPostTemp> findOrgPostTempByFlag(Short isFlag, String resourceId, FlipInfo flipInfo) {
-		return orgPostTempDao.findOrgPostTempByFlag(isFlag, resourceId, flipInfo);
-	}
+    @Override
+    public List<OrgPostTemp> findOrgPostTempByFlag(Short isFlag, String resourceId, FlipInfo flipInfo) {
+        return orgPostTempDao.findOrgPostTempByFlag(isFlag, resourceId, flipInfo);
+    }
 
-	@Override
-	public void updateOrgPostTemp(OrgPostTemp orgPostTemp) {
-		orgPostTempDao.updateOrgPostTemp(orgPostTemp);
-	}
-	
-	@Override
-	public Long getCount(Short isFlag, String resourceId) {
-		return orgPostTempDao.getCount(isFlag, resourceId);
-	}
+    @Override
+    public void updateOrgPostTemp(OrgPostTemp orgPostTemp) {
+        orgPostTempDao.updateOrgPostTemp(orgPostTemp);
+    }
 
-	public OrgPostTempDao getOrgPostTempDao() {
-		return orgPostTempDao;
-	}
+    @Override
+    public Long getCount(Short isFlag, String resourceId) {
+        return orgPostTempDao.getCount(isFlag, resourceId);
+    }
 
-	public void setOrgPostTempDao(OrgPostTempDao orgPostTempDao) {
-		this.orgPostTempDao = orgPostTempDao;
-	}
+    public OrgPostTempDao getOrgPostTempDao() {
+        return orgPostTempDao;
+    }
 
+    public void setOrgPostTempDao(OrgPostTempDao orgPostTempDao) {
+        this.orgPostTempDao = orgPostTempDao;
+    }
 
 }

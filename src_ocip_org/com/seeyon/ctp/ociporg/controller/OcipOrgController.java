@@ -23,128 +23,126 @@ import com.seeyon.ctp.util.FlipInfo;
 
 public class OcipOrgController extends BaseController {
 
-	private static final Logger LOGGER = Logger.getLogger(OcipOrgController.class);
+    private static final Logger LOGGER = Logger.getLogger(OcipOrgController.class);
 
-	private OrgUnitTempManager orgUnitTempManager;
+    private OrgUnitTempManager orgUnitTempManager;
 
-	private OcipUnitManagerImpl ocipUnitManagerImpl;
+    private OcipUnitManagerImpl ocipUnitManagerImpl;
 
-	private OcipDepartmentManagerImpl ocipDepartmentManagerImpl;
+    private OcipDepartmentManagerImpl ocipDepartmentManagerImpl;
 
-	private OcipMemberManagerImpl ocipMemberManagerImpl;
+    private OcipMemberManagerImpl ocipMemberManagerImpl;
 
-	private OcipResourceTempManager ocipResourceTempManager;
-	
-	private OcipPostManagerImpl ocipPostManagerImpl; 
-	
-	private OcipLevelManagerImpl ocipLevelManagerImpl;
+    private OcipResourceTempManager ocipResourceTempManager;
 
-	@Override
-	public ModelAndView index(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		List<Short> list = orgUnitTempManager.findOrgUnitTempByGrade("-6219453952095074147");
-		Collections.sort(list);
-		System.out.println(list);
-		return null;
-	}
+    private OcipPostManagerImpl ocipPostManagerImpl;
 
-	public ModelAndView load(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    private OcipLevelManagerImpl ocipLevelManagerImpl;
 
-		// String unitId = "-6436400663630756582";
-		// OrgUnitTemp orgUnitTemp = orgUnitTempManager.findOrgUnitTempById(unitId);
+    @Override
+    public ModelAndView index(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        List<Short> list = orgUnitTempManager.findOrgUnitTempByGrade("-6219453952095074147");
+        Collections.sort(list);
+        System.out.println(list);
+        return null;
+    }
 
-		Short isFlag = new Short("0");
-		FlipInfo flipInfo = new FlipInfo();
-		List<OcipResourceTemp> resourceTemps = ocipResourceTempManager.findOcipResourceTemp(isFlag);
-		if (CollectionUtils.isEmpty(resourceTemps)) {
-			return null;
-		}
-		
-		/**
-		 * TODO 测试，正式导入时不要打包这部分代码
-		 */
-		//String resourceId = "-6219453952095074147";
-		//ocipUnitManagerImpl.importOrg(resourceId , flipInfo);
-		//ocipDepartmentManagerImpl.importOrg(resourceId, flipInfo);
-		//ocipPostManagerImpl.importOrg(resourceId, flipInfo);
-		//ocipLevelManagerImpl.importOrg(resourceId, flipInfo);
-		//ocipMemberManagerImpl.importOrg(resourceId, flipInfo);
+    public ModelAndView load(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		Short ok = new Short("1");
-		for (OcipResourceTemp ocipResourceTemp : resourceTemps) {
-			String resourceId = ocipResourceTemp.getId();
-			ocipUnitManagerImpl.importOrg(resourceId,flipInfo);
-			ocipDepartmentManagerImpl.importOrg(resourceId, flipInfo);
-			ocipPostManagerImpl.importOrg(resourceId, flipInfo);
-			ocipLevelManagerImpl.importOrg(resourceId, flipInfo);
-			ocipMemberManagerImpl.importOrg(resourceId, flipInfo);
-			
-			ocipResourceTemp.setIsFlag(ok);
-			ocipResourceTempManager.updatOcipResourceTemp(ocipResourceTemp);
-			String sysName = ocipResourceTemp.getSysName();
-			System.out.println("系统:" + sysName + " 导入组织机构完成");
-		}
-		
-		System.out.println("导入组织机构完成");
+        // String unitId = "-6436400663630756582";
+        // OrgUnitTemp orgUnitTemp = orgUnitTempManager.findOrgUnitTempById(unitId);
 
-		return null;
-	}
+        Short isFlag = new Short("0");
+        FlipInfo flipInfo = new FlipInfo();
+        List<OcipResourceTemp> resourceTemps = ocipResourceTempManager.findOcipResourceTemp(isFlag);
+        if (CollectionUtils.isEmpty(resourceTemps)) {
+            return null;
+        }
 
-	public OrgUnitTempManager getOrgUnitTempManager() {
-		return orgUnitTempManager;
-	}
+        /**
+         * TODO 测试，正式导入时不要打包这部分代码
+         */
+        // String resourceId = "-6219453952095074147";
+        // ocipUnitManagerImpl.importOrg(resourceId , flipInfo);
+        // ocipDepartmentManagerImpl.importOrg(resourceId, flipInfo);
+        // ocipPostManagerImpl.importOrg(resourceId, flipInfo);
+        // ocipLevelManagerImpl.importOrg(resourceId, flipInfo);
+        // ocipMemberManagerImpl.importOrg(resourceId, flipInfo);
 
-	public void setOrgUnitTempManager(OrgUnitTempManager orgUnitTempManager) {
-		this.orgUnitTempManager = orgUnitTempManager;
-	}
+        Short ok = new Short("1");
+        for (OcipResourceTemp ocipResourceTemp : resourceTemps) {
+            String resourceId = ocipResourceTemp.getId();
+            ocipUnitManagerImpl.importOrg(resourceId, flipInfo);
+            ocipDepartmentManagerImpl.importOrg(resourceId, flipInfo);
+            ocipPostManagerImpl.importOrg(resourceId, flipInfo);
+            ocipLevelManagerImpl.importOrg(resourceId, flipInfo);
+            ocipMemberManagerImpl.importOrg(resourceId, flipInfo);
 
-	public OcipUnitManagerImpl getOcipUnitManagerImpl() {
-		return ocipUnitManagerImpl;
-	}
+            ocipResourceTemp.setIsFlag(ok);
+            ocipResourceTempManager.updatOcipResourceTemp(ocipResourceTemp);
+            String sysName = ocipResourceTemp.getSysName();
+            System.out.println("系统:" + sysName + " 导入组织机构完成");
+        }
 
-	public void setOcipUnitManagerImpl(OcipUnitManagerImpl ocipUnitManagerImpl) {
-		this.ocipUnitManagerImpl = ocipUnitManagerImpl;
-	}
+        System.out.println("导入组织机构完成");
 
-	public OcipResourceTempManager getOcipResourceTempManager() {
-		return ocipResourceTempManager;
-	}
+        return null;
+    }
 
-	public void setOcipResourceTempManager(OcipResourceTempManager ocipResourceTempManager) {
-		this.ocipResourceTempManager = ocipResourceTempManager;
-	}
+    public OrgUnitTempManager getOrgUnitTempManager() {
+        return orgUnitTempManager;
+    }
 
-	public OcipDepartmentManagerImpl getOcipDepartmentManagerImpl() {
-		return ocipDepartmentManagerImpl;
-	}
+    public void setOrgUnitTempManager(OrgUnitTempManager orgUnitTempManager) {
+        this.orgUnitTempManager = orgUnitTempManager;
+    }
 
-	public void setOcipDepartmentManagerImpl(OcipDepartmentManagerImpl ocipDepartmentManagerImpl) {
-		this.ocipDepartmentManagerImpl = ocipDepartmentManagerImpl;
-	}
+    public OcipUnitManagerImpl getOcipUnitManagerImpl() {
+        return ocipUnitManagerImpl;
+    }
 
-	public OcipMemberManagerImpl getOcipMemberManagerImpl() {
-		return ocipMemberManagerImpl;
-	}
+    public void setOcipUnitManagerImpl(OcipUnitManagerImpl ocipUnitManagerImpl) {
+        this.ocipUnitManagerImpl = ocipUnitManagerImpl;
+    }
 
-	public void setOcipMemberManagerImpl(OcipMemberManagerImpl ocipMemberManagerImpl) {
-		this.ocipMemberManagerImpl = ocipMemberManagerImpl;
-	}
+    public OcipResourceTempManager getOcipResourceTempManager() {
+        return ocipResourceTempManager;
+    }
 
-	public OcipPostManagerImpl getOcipPostManagerImpl() {
-		return ocipPostManagerImpl;
-	}
+    public void setOcipResourceTempManager(OcipResourceTempManager ocipResourceTempManager) {
+        this.ocipResourceTempManager = ocipResourceTempManager;
+    }
 
-	public void setOcipPostManagerImpl(OcipPostManagerImpl ocipPostManagerImpl) {
-		this.ocipPostManagerImpl = ocipPostManagerImpl;
-	}
+    public OcipDepartmentManagerImpl getOcipDepartmentManagerImpl() {
+        return ocipDepartmentManagerImpl;
+    }
 
-	public OcipLevelManagerImpl getOcipLevelManagerImpl() {
-		return ocipLevelManagerImpl;
-	}
+    public void setOcipDepartmentManagerImpl(OcipDepartmentManagerImpl ocipDepartmentManagerImpl) {
+        this.ocipDepartmentManagerImpl = ocipDepartmentManagerImpl;
+    }
 
-	public void setOcipLevelManagerImpl(OcipLevelManagerImpl ocipLevelManagerImpl) {
-		this.ocipLevelManagerImpl = ocipLevelManagerImpl;
-	}
-	
-	
-	
+    public OcipMemberManagerImpl getOcipMemberManagerImpl() {
+        return ocipMemberManagerImpl;
+    }
+
+    public void setOcipMemberManagerImpl(OcipMemberManagerImpl ocipMemberManagerImpl) {
+        this.ocipMemberManagerImpl = ocipMemberManagerImpl;
+    }
+
+    public OcipPostManagerImpl getOcipPostManagerImpl() {
+        return ocipPostManagerImpl;
+    }
+
+    public void setOcipPostManagerImpl(OcipPostManagerImpl ocipPostManagerImpl) {
+        this.ocipPostManagerImpl = ocipPostManagerImpl;
+    }
+
+    public OcipLevelManagerImpl getOcipLevelManagerImpl() {
+        return ocipLevelManagerImpl;
+    }
+
+    public void setOcipLevelManagerImpl(OcipLevelManagerImpl ocipLevelManagerImpl) {
+        this.ocipLevelManagerImpl = ocipLevelManagerImpl;
+    }
+
 }

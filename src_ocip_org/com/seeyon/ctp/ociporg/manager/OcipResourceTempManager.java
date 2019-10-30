@@ -6,9 +6,9 @@ import com.seeyon.ctp.ociporg.po.OcipResourceTemp;
 
 public interface OcipResourceTempManager {
 
-	public List<OcipResourceTemp> findOcipResourceTemp(Short isFlag);
+    public List<OcipResourceTemp> findOcipResourceTemp(Short isFlag);
 
-	public void updatOcipResourceTemp(OcipResourceTemp ocipResourceTemp) throws Exception;
-	
-	public List<OcipResourceTemp> findOcipResourceTempById(String id);
+    public void updatOcipResourceTemp(OcipResourceTemp ocipResourceTemp) throws Exception;
+
+    public List<OcipResourceTemp> findOcipResourceTempById(String id);
 }

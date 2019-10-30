@@ -9,40 +9,40 @@ import com.seeyon.ctp.util.FlipInfo;
 
 public class OrgUnitTempManagerImpl implements OrgUnitTempManager {
 
-	private OrgUnitTempDao orgUnitTempDao;
+    private OrgUnitTempDao orgUnitTempDao;
 
-	@Override
-	public OrgUnitTemp findOrgUnitTempById(String id) {
-		return orgUnitTempDao.findOrgUnitTempById(id);
-	}
+    @Override
+    public OrgUnitTemp findOrgUnitTempById(String id) {
+        return orgUnitTempDao.findOrgUnitTempById(id);
+    }
 
-	@Override
-	public List<OrgUnitTemp> findOrgUnitTempByGrade(Short grade, Short isFlag, String resourceId, FlipInfo flipInfo) {
-		return orgUnitTempDao.findOrgUnitTempByGrade(grade, isFlag, resourceId, flipInfo);
-	}
+    @Override
+    public List<OrgUnitTemp> findOrgUnitTempByGrade(Short grade, Short isFlag, String resourceId, FlipInfo flipInfo) {
+        return orgUnitTempDao.findOrgUnitTempByGrade(grade, isFlag, resourceId, flipInfo);
+    }
 
-	@Override
-	public Long getCount(Short grade, Short isFlag, String resourceId) {
-		return orgUnitTempDao.getCount(grade, isFlag, resourceId);
-	}
+    @Override
+    public Long getCount(Short grade, Short isFlag, String resourceId) {
+        return orgUnitTempDao.getCount(grade, isFlag, resourceId);
+    }
 
-	@Override
-	public List<Short> findOrgUnitTempByGrade(String resourceId) {
-		return orgUnitTempDao.findOrgUnitTempByGrade(resourceId);
-	}
+    @Override
+    public List<Short> findOrgUnitTempByGrade(String resourceId) {
+        return orgUnitTempDao.findOrgUnitTempByGrade(resourceId);
+    }
 
-	@Override
-	public void updatOrgUnitTemp(OrgUnitTemp orgUnitTemp) throws Exception {
-		orgUnitTempDao.updatOrgUnitTemp(orgUnitTemp);
+    @Override
+    public void updatOrgUnitTemp(OrgUnitTemp orgUnitTemp) throws Exception {
+        orgUnitTempDao.updatOrgUnitTemp(orgUnitTemp);
 
-	}
+    }
 
-	public OrgUnitTempDao getOrgUnitTempDao() {
-		return orgUnitTempDao;
-	}
+    public OrgUnitTempDao getOrgUnitTempDao() {
+        return orgUnitTempDao;
+    }
 
-	public void setOrgUnitTempDao(OrgUnitTempDao orgUnitTempDao) {
-		this.orgUnitTempDao = orgUnitTempDao;
-	}
+    public void setOrgUnitTempDao(OrgUnitTempDao orgUnitTempDao) {
+        this.orgUnitTempDao = orgUnitTempDao;
+    }
 
 }

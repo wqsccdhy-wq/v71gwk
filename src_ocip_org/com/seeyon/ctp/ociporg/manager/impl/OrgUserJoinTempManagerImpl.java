@@ -9,35 +9,35 @@ import com.seeyon.ctp.util.FlipInfo;
 
 public class OrgUserJoinTempManagerImpl implements OrgUserJoinTempManager {
 
-	private OrgUserJoinTempDao orgUserJoinTempDao;
+    private OrgUserJoinTempDao orgUserJoinTempDao;
 
-	@Override
-	public OrgUserJoinTemp findOrgUserJoinTempById(String id) {
-		return orgUserJoinTempDao.findOrgUserJoinTempById(id);
-	}
+    @Override
+    public OrgUserJoinTemp findOrgUserJoinTempById(String id) {
+        return orgUserJoinTempDao.findOrgUserJoinTempById(id);
+    }
 
-	@Override
-	public List<OrgUserJoinTemp> findOrgUserJoinTempByGrade(Short isFlag, String resourceId, FlipInfo flipInfo) {
-		return orgUserJoinTempDao.findOrgUserJoinTempByGrade(isFlag, resourceId, flipInfo);
-	}
+    @Override
+    public List<OrgUserJoinTemp> findOrgUserJoinTempByGrade(Short isFlag, String resourceId, FlipInfo flipInfo) {
+        return orgUserJoinTempDao.findOrgUserJoinTempByGrade(isFlag, resourceId, flipInfo);
+    }
 
-	@Override
-	public Long getCount(Short isFlag, String resourceId) {
-		return orgUserJoinTempDao.getCount(isFlag, resourceId);
-	}
+    @Override
+    public Long getCount(Short isFlag, String resourceId) {
+        return orgUserJoinTempDao.getCount(isFlag, resourceId);
+    }
 
-	@Override
-	public void updatOrgUserJoinTemp(OrgUserJoinTemp orgUserJoinTemp) throws Exception {
-		orgUserJoinTempDao.updatOrgUserJoinTemp(orgUserJoinTemp);
+    @Override
+    public void updatOrgUserJoinTemp(OrgUserJoinTemp orgUserJoinTemp) throws Exception {
+        orgUserJoinTempDao.updatOrgUserJoinTemp(orgUserJoinTemp);
 
-	}
+    }
 
-	public OrgUserJoinTempDao getOrgUserJoinTempDao() {
-		return orgUserJoinTempDao;
-	}
+    public OrgUserJoinTempDao getOrgUserJoinTempDao() {
+        return orgUserJoinTempDao;
+    }
 
-	public void setOrgUserJoinTempDao(OrgUserJoinTempDao orgUserJoinTempDao) {
-		this.orgUserJoinTempDao = orgUserJoinTempDao;
-	}
+    public void setOrgUserJoinTempDao(OrgUserJoinTempDao orgUserJoinTempDao) {
+        this.orgUserJoinTempDao = orgUserJoinTempDao;
+    }
 
 }

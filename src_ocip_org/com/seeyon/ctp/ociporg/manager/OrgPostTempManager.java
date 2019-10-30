@@ -7,12 +7,12 @@ import com.seeyon.ctp.util.FlipInfo;
 
 public interface OrgPostTempManager {
 
-	public OrgPostTemp findOrgPostTempById(String id);
+    public OrgPostTemp findOrgPostTempById(String id);
 
-	public List<OrgPostTemp> findOrgPostTempByFlag(Short isFlag, String resourceId, FlipInfo flipInfo);
+    public List<OrgPostTemp> findOrgPostTempByFlag(Short isFlag, String resourceId, FlipInfo flipInfo);
 
-	public void updateOrgPostTemp(OrgPostTemp orgPostTemp);
-	
-	public Long getCount(Short isFlag, String resourceId);
+    public void updateOrgPostTemp(OrgPostTemp orgPostTemp);
+
+    public Long getCount(Short isFlag, String resourceId);
 
 }

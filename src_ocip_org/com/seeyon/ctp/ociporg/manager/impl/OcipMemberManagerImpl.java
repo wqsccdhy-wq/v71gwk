@@ -43,13 +43,13 @@ public class OcipMemberManagerImpl extends AbsOcipOrgManager<OrgUserJoinTemp> {
 
     private OrgDepartmentTempManager orgDepartmentTempManager;
 
-	private OrgUnitTempManager orgUnitTempManager;
+    private OrgUnitTempManager orgUnitTempManager;
 
     private OrgPostTempManager orgPostTempManager;
 
     private OrgUserLevelTempDao orgUserLevelTempDao;
 
-	@Override
+    @Override
     public void importOrg(String resourceId, FlipInfo flipInfo) {
         Short isFlag = new Short("0");
         Long allCount = orgUserJoinTempManager.getCount(isFlag, resourceId);
@@ -63,21 +63,21 @@ public class OcipMemberManagerImpl extends AbsOcipOrgManager<OrgUserJoinTemp> {
         /**
          * TODO 测试
          */
-        //严柏鑫
-		/*OrgUserJoinTemp orgUserJoinTemp = orgUserJoinTempManager.findOrgUserJoinTempById("5930610715977862833");
-		importEntry(orgUserJoinTemp , resourceId);
-		
-		//周浩
-		OrgUserJoinTemp orgUserJoinTemp1 = orgUserJoinTempManager.findOrgUserJoinTempById("-727955267357749758");
-		importEntry(orgUserJoinTemp1 , resourceId);*/
+        // 严柏鑫
+        /*OrgUserJoinTemp orgUserJoinTemp = orgUserJoinTempManager.findOrgUserJoinTempById("5930610715977862833");
+        importEntry(orgUserJoinTemp , resourceId);
+        
+        //周浩
+        OrgUserJoinTemp orgUserJoinTemp1 = orgUserJoinTempManager.findOrgUserJoinTempById("-727955267357749758");
+        importEntry(orgUserJoinTemp1 , resourceId);*/
 
         String info = "resourceId:" + resourceId + "| 的人员一共有:" + allCount + "条数据需要导入!!!";
         LOGGER.info(info);
         System.out.println(info);
         Long count = (allCount / 20l) + 1;
         for (long i = 0; i < count; i++) {
-            List<OrgUserJoinTemp> lists = orgUserJoinTempManager.findOrgUserJoinTempByGrade(isFlag, resourceId,
-                    flipInfo);
+            List<OrgUserJoinTemp> lists =
+                orgUserJoinTempManager.findOrgUserJoinTempByGrade(isFlag, resourceId, flipInfo);
             if (!CollectionUtils.isEmpty(lists)) {
                 for (OrgUserJoinTemp orgUserJoinTemp : lists) {
                     importEntry(orgUserJoinTemp, resourceId);
@@ -116,8 +116,8 @@ public class OcipMemberManagerImpl extends AbsOcipOrgManager<OrgUserJoinTemp> {
                 orgUserJoinTemp.setIsFlag(result);
                 long endTime = System.currentTimeMillis();
                 long time = (endTime - beginTime) / 1000;
-                String info = "生成人员结果,人员:" + name + "|id:" + id + "|result:" + result + "|messageStatus:" + messageStatus
-                        + "|耗时:" + time + "秒";
+                String info = "生成人员结果,人员:" + name + "|id:" + id + "|result:" + result + "|messageStatus:"
+                    + messageStatus + "|耗时:" + time + "秒";
                 LOGGER.info(info);
                 System.out.println(info);
             } else {
@@ -148,14 +148,14 @@ public class OcipMemberManagerImpl extends AbsOcipOrgManager<OrgUserJoinTemp> {
     private V3xOrgMember initMember(OrgUserJoinTemp orgUserJoinTemp, String resourceId) {
         V3xOrgMember member = new V3xOrgMember();
         String id = orgUserJoinTemp.getObjectId();
-        if (Strings.isNullOrEmpty(id)){
-			String name = member.getName();
-			String info = "人员:" + name + "|id:" + id + "|resourceId:" + resourceId + "ObjectId为空，导入失败!!";
-			LOGGER.info(info);
-			System.out.println(info);
-			addLog(info, resourceId, id, name, "MEMBER", false);
-			return null;
-		}
+        if (Strings.isNullOrEmpty(id)) {
+            String name = member.getName();
+            String info = "人员:" + name + "|id:" + id + "|resourceId:" + resourceId + "ObjectId为空，导入失败!!";
+            LOGGER.info(info);
+            System.out.println(info);
+            addLog(info, resourceId, id, name, "MEMBER", false);
+            return null;
+        }
         member.setId(Long.valueOf(id));
         member.setCode(orgUserJoinTemp.getCode());
         List<MemberPost> second_post = new ArrayList<MemberPost>();
@@ -163,7 +163,8 @@ public class OcipMemberManagerImpl extends AbsOcipOrgManager<OrgUserJoinTemp> {
 
         String name = orgUserJoinTemp.getName();
 
-        OrgRelationTemp relationTemp = orgRelationTempManager.findOrgRelationTempByUserId(orgUserJoinTemp.getId(), resourceId);
+        OrgRelationTemp relationTemp =
+            orgRelationTempManager.findOrgRelationTempByUserId(orgUserJoinTemp.getId(), resourceId);
         if (relationTemp == null) {
             String info = "人员:" + name + "|id:" + id + "|resourceId:" + resourceId + "关联关系不存在，导入失败!!";
             LOGGER.info(info);
@@ -174,7 +175,7 @@ public class OcipMemberManagerImpl extends AbsOcipOrgManager<OrgUserJoinTemp> {
         String unitId = relationTemp.getUnitId();
         String departmentId = relationTemp.getDepartmentId();
 
-        //if (Strings.isNullOrEmpty(unitId) || Strings.isNullOrEmpty(departmentId)) {
+        // if (Strings.isNullOrEmpty(unitId) || Strings.isNullOrEmpty(departmentId)) {
         if (Strings.isNullOrEmpty(unitId)) {
             String info = "人员:" + name + "|id:" + id + "|resourceId:" + resourceId + "单位不存在，导入失败!!";
             LOGGER.info(info);
@@ -211,7 +212,7 @@ public class OcipMemberManagerImpl extends AbsOcipOrgManager<OrgUserJoinTemp> {
 
         Long sort = 1l;
         Integer sortId = orgUserJoinTemp.getSortId();
-        if (sortId != null && sortId !=0) {
+        if (sortId != null && sortId != 0) {
             sort = Long.valueOf(String.valueOf(sortId));
         }
         member.setSortId(sort);
@@ -276,7 +277,7 @@ public class OcipMemberManagerImpl extends AbsOcipOrgManager<OrgUserJoinTemp> {
     }
 
     public OrgUserJoinTempManager getOrgUserJoinTempManager() {
-    	return orgUserJoinTempManager;
+        return orgUserJoinTempManager;
     }
 
     public void setOrgUserJoinTempManager(OrgUserJoinTempManager orgUserJoinTempManager) {
@@ -315,19 +316,19 @@ public class OcipMemberManagerImpl extends AbsOcipOrgManager<OrgUserJoinTemp> {
         this.orgUnitTempManager = orgUnitTempManager;
     }
 
-	public OrgPostTempManager getOrgPostTempManager() {
-		return orgPostTempManager;
-	}
+    public OrgPostTempManager getOrgPostTempManager() {
+        return orgPostTempManager;
+    }
 
-	public void setOrgPostTempManager(OrgPostTempManager orgPostTempManager) {
-		this.orgPostTempManager = orgPostTempManager;
-	}
+    public void setOrgPostTempManager(OrgPostTempManager orgPostTempManager) {
+        this.orgPostTempManager = orgPostTempManager;
+    }
 
-	public OrgUserLevelTempDao getOrgUserLevelTempDao() {
-		return orgUserLevelTempDao;
-	}
+    public OrgUserLevelTempDao getOrgUserLevelTempDao() {
+        return orgUserLevelTempDao;
+    }
 
-	public void setOrgUserLevelTempDao(OrgUserLevelTempDao orgUserLevelTempDao) {
-		this.orgUserLevelTempDao = orgUserLevelTempDao;
-	}
+    public void setOrgUserLevelTempDao(OrgUserLevelTempDao orgUserLevelTempDao) {
+        this.orgUserLevelTempDao = orgUserLevelTempDao;
+    }
 }

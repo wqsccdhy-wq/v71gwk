@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC 
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="com.seeyon.ctp.ociporg.po.OrgUserLevelTemp" table="org_user_level_temp">
         <id name="id" type="string">
@@ -15,7 +15,8 @@
             <column length="64" name="CODE">
             </column>
         </property>
-        <property generated="never" lazy="false" name="value" optimistic-lock="true" type="java.lang.Integer" unique="false">
+        <property generated="never" lazy="false" name="value" optimistic-lock="true" type="java.lang.Integer"
+                  unique="false">
             <column name="VALUE">
             </column>
         </property>
@@ -32,34 +33,41 @@
             <column length="64" name="RESOURCE_ID">
             </column>
         </property>
-        <property generated="never" lazy="false" name="sortId" optimistic-lock="true" type="java.lang.Integer" unique="false">
+        <property generated="never" lazy="false" name="sortId" optimistic-lock="true" type="java.lang.Integer"
+                  unique="false">
             <column name="SORT_ID">
             </column>
         </property>
-        <property generated="never" lazy="false" name="isEnable" optimistic-lock="true" type="java.lang.Integer" unique="false">
+        <property generated="never" lazy="false" name="isEnable" optimistic-lock="true" type="java.lang.Integer"
+                  unique="false">
             <column name="IS_ENABLE">
             </column>
         </property>
-        <property generated="never" lazy="false" name="synState" optimistic-lock="true" type="java.lang.Integer" unique="false">
+        <property generated="never" lazy="false" name="synState" optimistic-lock="true" type="java.lang.Integer"
+                  unique="false">
             <column name="SYN_STATE">
             </column>
         </property>
         <property generated="never" lazy="false" name="objectId" optimistic-lock="true" type="string" unique="false">
             <column length="64" name="OBJECT_ID"/>
         </property>
-        <property generated="never" lazy="false" name="delFlag" optimistic-lock="true" type="java.lang.Integer" unique="false">
+        <property generated="never" lazy="false" name="delFlag" optimistic-lock="true" type="java.lang.Integer"
+                  unique="false">
             <column name="DEL_FLAG">
             </column>
         </property>
-        <property generated="never" lazy="false" name="createTime" optimistic-lock="true" type="timestamp" unique="false">
+        <property generated="never" lazy="false" name="createTime" optimistic-lock="true" type="timestamp"
+                  unique="false">
             <column length="19" name="CREATE_TIME">
             </column>
         </property>
-        <property generated="never" lazy="false" name="updateTime" optimistic-lock="true" type="timestamp" unique="false">
+        <property generated="never" lazy="false" name="updateTime" optimistic-lock="true" type="timestamp"
+                  unique="false">
             <column length="19" name="UPDATE_TIME">
             </column>
         </property>
-        <property generated="never" lazy="false" name="isFlag" optimistic-lock="true" type="java.lang.Short" unique="false">
+        <property generated="never" lazy="false" name="isFlag" optimistic-lock="true" type="java.lang.Short"
+                  unique="false">
             <column name="IS_FLAG"/>
         </property>
     </class>

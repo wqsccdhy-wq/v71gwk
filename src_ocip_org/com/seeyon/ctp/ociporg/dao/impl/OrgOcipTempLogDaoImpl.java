@@ -6,9 +6,9 @@ import com.seeyon.ctp.util.DBAgent;
 
 public class OrgOcipTempLogDaoImpl implements OrgOcipTempLogDao {
 
-	@Override
-	public void insertLog(OrgOcipTempLog log) {
-		DBAgent.save(log);
-	}
+    @Override
+    public void insertLog(OrgOcipTempLog log) {
+        DBAgent.save(log);
+    }
 
 }

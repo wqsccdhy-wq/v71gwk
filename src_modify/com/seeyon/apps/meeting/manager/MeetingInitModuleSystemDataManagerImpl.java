@@ -14,29 +14,29 @@ import com.seeyon.ctp.common.exceptions.BusinessException;
  */
 public class MeetingInitModuleSystemDataManagerImpl implements MeetingInitModuleSystemDataManager {
 
-	private static final Log LOG = LogFactory.getLog(MeetingInitModuleSystemDataManagerImpl.class);
+    private static final Log LOG = LogFactory.getLog(MeetingInitModuleSystemDataManagerImpl.class);
 
-	public MeetingTypeManager meetingTypeManager;
-	public PublicResourceManager publicResourceManager;
+    public MeetingTypeManager meetingTypeManager;
+    public PublicResourceManager publicResourceManager;
 
-	public void setMeetingTypeManager(MeetingTypeManager meetingTypeManager) {
-		this.meetingTypeManager = meetingTypeManager;
-	}
+    public void setMeetingTypeManager(MeetingTypeManager meetingTypeManager) {
+        this.meetingTypeManager = meetingTypeManager;
+    }
 
-	public void setPublicResourceManager(PublicResourceManager publicResourceManager) {
-		this.publicResourceManager = publicResourceManager;
-	}
+    public void setPublicResourceManager(PublicResourceManager publicResourceManager) {
+        this.publicResourceManager = publicResourceManager;
+    }
 
-	@Override
-	public void initModuleSystemData(long accountId) throws BusinessException {
-		
-		LOG.info("开始为单位" + accountId + "复制会议分类...");
-		//this.meetingTypeManager.generateAccountDefaultMeetingType(accountId);
-		LOG.info(accountId + "复制会议分类结束。");
+    @Override
+    public void initModuleSystemData(long accountId) throws BusinessException {
 
-		LOG.info("开始为单位" + accountId + "复制会议用品...");
-		//this.publicResourceManager.generateAccountDefaultMeetingResource(accountId);
-		LOG.info(accountId + "复制会议用品结束。");
-	}
+        LOG.info("开始为单位" + accountId + "复制会议分类...");
+        // this.meetingTypeManager.generateAccountDefaultMeetingType(accountId);
+        LOG.info(accountId + "复制会议分类结束。");
+
+        LOG.info("开始为单位" + accountId + "复制会议用品...");
+        // this.publicResourceManager.generateAccountDefaultMeetingResource(accountId);
+        LOG.info(accountId + "复制会议用品结束。");
+    }
 
 }

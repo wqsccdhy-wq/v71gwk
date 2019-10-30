@@ -8,125 +8,123 @@ import java.util.Date;
  */
 public class OrgRelationTemp implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 387837104594476153L;
-	private String id;
-	private String unitId;
-	private String departmentId;
-	private String postId;
-	private String resourceId;
-	private String userId;
-	private String relationType;
-	private Integer synState;
-	private Integer delFlag;
-	private Date createTime;
-	private Date updateTime;
-	private String type;
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 387837104594476153L;
+    private String id;
+    private String unitId;
+    private String departmentId;
+    private String postId;
+    private String resourceId;
+    private String userId;
+    private String relationType;
+    private Integer synState;
+    private Integer delFlag;
+    private Date createTime;
+    private Date updateTime;
+    private String type;
 
-	public OrgRelationTemp() {
-	}
+    public OrgRelationTemp() {}
 
-	public OrgRelationTemp(String id) {
-		this.id = id;
-	}
+    public OrgRelationTemp(String id) {
+        this.id = id;
+    }
 
+    public String getId() {
+        return this.id;
+    }
 
-	public String getId() {
-		return this.id;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public String getUnitId() {
+        return this.unitId;
+    }
 
-	public String getUnitId() {
-		return this.unitId;
-	}
+    public void setUnitId(String unitId) {
+        this.unitId = unitId;
+    }
 
-	public void setUnitId(String unitId) {
-		this.unitId = unitId;
-	}
+    public String getDepartmentId() {
+        return this.departmentId;
+    }
 
-	public String getDepartmentId() {
-		return this.departmentId;
-	}
+    public void setDepartmentId(String departmentId) {
+        this.departmentId = departmentId;
+    }
 
-	public void setDepartmentId(String departmentId) {
-		this.departmentId = departmentId;
-	}
+    public String getPostId() {
+        return this.postId;
+    }
 
-	public String getPostId() {
-		return this.postId;
-	}
+    public void setPostId(String postId) {
+        this.postId = postId;
+    }
 
-	public void setPostId(String postId) {
-		this.postId = postId;
-	}
+    public String getResourceId() {
+        return this.resourceId;
+    }
 
-	public String getResourceId() {
-		return this.resourceId;
-	}
+    public void setResourceId(String resourceId) {
+        this.resourceId = resourceId;
+    }
 
-	public void setResourceId(String resourceId) {
-		this.resourceId = resourceId;
-	}
+    public String getUserId() {
+        return this.userId;
+    }
 
-	public String getUserId() {
-		return this.userId;
-	}
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+    public String getRelationType() {
+        return this.relationType;
+    }
 
-	public String getRelationType() {
-		return this.relationType;
-	}
+    public void setRelationType(String relationType) {
+        this.relationType = relationType;
+    }
 
-	public void setRelationType(String relationType) {
-		this.relationType = relationType;
-	}
+    public Integer getSynState() {
+        return this.synState;
+    }
 
-	public Integer getSynState() {
-		return this.synState;
-	}
+    public void setSynState(Integer synState) {
+        this.synState = synState;
+    }
 
-	public void setSynState(Integer synState) {
-		this.synState = synState;
-	}
+    public Integer getDelFlag() {
+        return this.delFlag;
+    }
 
-	public Integer getDelFlag() {
-		return this.delFlag;
-	}
+    public void setDelFlag(Integer delFlag) {
+        this.delFlag = delFlag;
+    }
 
-	public void setDelFlag(Integer delFlag) {
-		this.delFlag = delFlag;
-	}
+    public Date getCreateTime() {
+        return this.createTime;
+    }
 
-	public Date getCreateTime() {
-		return this.createTime;
-	}
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
 
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
+    public Date getUpdateTime() {
+        return this.updateTime;
+    }
 
-	public Date getUpdateTime() {
-		return this.updateTime;
-	}
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
 
-	public void setUpdateTime(Date updateTime) {
-		this.updateTime = updateTime;
-	}
+    public String getType() {
+        return this.type;
+    }
 
-	public String getType() {
-		return this.type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
+    public void setType(String type) {
+        this.type = type;
+    }
 
 }

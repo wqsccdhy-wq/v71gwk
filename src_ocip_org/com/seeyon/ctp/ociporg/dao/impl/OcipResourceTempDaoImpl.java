@@ -10,27 +10,27 @@ import com.seeyon.ctp.util.DBAgent;
 
 public class OcipResourceTempDaoImpl implements OcipResourceTempDao {
 
-	@Override
-	public List<OcipResourceTemp> findOcipResourceTemp(Short isFlag) {
-		String hql = "from OcipResourceTemp ort where ort.isFlag=:isFlag";
-		Map<String, Object> parameterMap = new HashMap<String, Object>();
-		parameterMap.put("isFlag", isFlag);
-		List<OcipResourceTemp> find = DBAgent.find(hql, parameterMap);
-		return find;
-	}
-	
-	@Override
-	public List<OcipResourceTemp> findOcipResourceTempById(String id) {
-		String hql = "from OcipResourceTemp ort where ort.id=:id";
-		Map<String, Object> parameterMap = new HashMap<String, Object>();
-		parameterMap.put("id", id);
-		List<OcipResourceTemp> find = DBAgent.find(hql, parameterMap);
-		return find;
-	}
+    @Override
+    public List<OcipResourceTemp> findOcipResourceTemp(Short isFlag) {
+        String hql = "from OcipResourceTemp ort where ort.isFlag=:isFlag";
+        Map<String, Object> parameterMap = new HashMap<String, Object>();
+        parameterMap.put("isFlag", isFlag);
+        List<OcipResourceTemp> find = DBAgent.find(hql, parameterMap);
+        return find;
+    }
 
-	@Override
-	public void updatOcipResourceTemp(OcipResourceTemp ocipResourceTemp) throws Exception {
-		DBAgent.update(ocipResourceTemp);
-	}
+    @Override
+    public List<OcipResourceTemp> findOcipResourceTempById(String id) {
+        String hql = "from OcipResourceTemp ort where ort.id=:id";
+        Map<String, Object> parameterMap = new HashMap<String, Object>();
+        parameterMap.put("id", id);
+        List<OcipResourceTemp> find = DBAgent.find(hql, parameterMap);
+        return find;
+    }
+
+    @Override
+    public void updatOcipResourceTemp(OcipResourceTemp ocipResourceTemp) throws Exception {
+        DBAgent.update(ocipResourceTemp);
+    }
 
 }

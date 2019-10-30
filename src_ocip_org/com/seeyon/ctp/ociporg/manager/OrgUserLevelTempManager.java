@@ -7,12 +7,12 @@ import com.seeyon.ctp.util.FlipInfo;
 
 public interface OrgUserLevelTempManager {
 
-	public OrgUserLevelTemp findOrgUserLevelTempById(String id);
+    public OrgUserLevelTemp findOrgUserLevelTempById(String id);
 
-	public List<OrgUserLevelTemp> findOrgUserLevelTempByFlag(Short isFlag, String resourceId, FlipInfo flipInfo);
+    public List<OrgUserLevelTemp> findOrgUserLevelTempByFlag(Short isFlag, String resourceId, FlipInfo flipInfo);
 
-	public void updateOrgUserLevelTemp(OrgUserLevelTemp orgUserLevelTemp);
+    public void updateOrgUserLevelTemp(OrgUserLevelTemp orgUserLevelTemp);
 
-	public Long getCount(Short isFlag, String resourceId);
+    public Long getCount(Short isFlag, String resourceId);
 
 }
