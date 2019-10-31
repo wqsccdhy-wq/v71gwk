@@ -96,6 +96,16 @@ public class OcipUnitManagerImpl extends AbsOcipOrgManager<OrgUnitTemp> {
         long beginTime = System.currentTimeMillis();
 
         V3xOrgAccount newAccount = initAccount(orgUnitTemp, resourceId);
+        if (newAccount == null){
+            //orgUnitTempManager.updatOrgUnitTemp(orgUnitTemp);
+            try {
+                orgUnitTemp.setIsFlag(new Short("2"));
+                orgUnitTempManager.updatOrgUnitTemp(orgUnitTemp);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return;
+        }
         V3xOrgMember admin = initAdminMember(orgUnitTemp);
         MessageStatus messageStatus = null;
         boolean success = false;
@@ -161,15 +171,14 @@ public class OcipUnitManagerImpl extends AbsOcipOrgManager<OrgUnitTemp> {
             admin.setId(UUIDLong.longUUID());
             admin.setV3xOrgPrincipal(new V3xOrgPrincipal(admin.getId(), "admin_" + admin.getId(), "123456"));
             String info = "单位:" + name + "|id:" + id + "|没有单位管理员，自动生成单位管理员,账号:";
-            addLog(info, orgUnitTemp.getResourceId(), orgUnitTemp.getId(), name, "UNIT", null);
+            addLog(info, orgUnitTemp.getResourceId(), orgUnitTemp.getId(), name, "UNIT", false);
         } else {
             OrgUserJoinTemp orgUserJoinTemp = orgUserJoinTempManager.findOrgUserJoinTempById(adminId);
             if (orgUserJoinTemp == null) {
                 admin.setId(UUIDLong.longUUID());
                 admin.setV3xOrgPrincipal(new V3xOrgPrincipal(admin.getId(), "admin_" + admin.getId(), "123456"));
                 String info = "单位:" + name + "|id:" + id + "|adminId:" + adminId + "|单位管理员查不到";
-                // LOGGER.info(info);
-                addLog(info, orgUnitTemp.getResourceId(), orgUnitTemp.getId(), name, "UNIT", null);
+                addLog(info, orgUnitTemp.getResourceId(), orgUnitTemp.getId(), name, "UNIT", false);
                 return admin;
             }
             String password = orgUserJoinTemp.getPassword();
@@ -193,6 +202,7 @@ public class OcipUnitManagerImpl extends AbsOcipOrgManager<OrgUnitTemp> {
         } else {
             newAccount.setName(name);
         }
+        newAccount.setName(name);
 
         String code = orgUnitTemp.getCode();
         // newAccount.setCode(orgUnitTemp.getId());
@@ -220,6 +230,9 @@ public class OcipUnitManagerImpl extends AbsOcipOrgManager<OrgUnitTemp> {
 
         Integer sortId = orgUnitTemp.getSortId();
         if (sortId != null) {
+            if (sortId == 0){
+                sortId = 1;
+            }
             newAccount.setSortId(Long.valueOf(String.valueOf(sortId)));
         }
 
@@ -238,6 +251,13 @@ public class OcipUnitManagerImpl extends AbsOcipOrgManager<OrgUnitTemp> {
                             superior = Long.valueOf(objectId);
                         }
                     }
+                }else{
+                    Short grade = orgUnitTemp.getGrade();
+                    if (grade > 1){
+                        addLog("上级单位找不到", resourceId, orgUnitTemp.getId(), name, "UNIT", false);
+                        return null;
+                    }
+
                 }
 
             }

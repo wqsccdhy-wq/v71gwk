@@ -74,6 +74,8 @@ public class OcipLevelManagerImpl extends AbsOcipOrgManager<OrgUserLevelTemp> {
         try {
             V3xOrgLevel orgLevel = initOrgLevel(t);
             if (orgLevel == null) {
+                t.setIsFlag(new Short("2"));
+                orgUserLevelTempManager.updateOrgUserLevelTemp(t);
                 return;
             }
             OrganizationMessage message = orgManagerDirect.addLevel(orgLevel);
@@ -122,24 +124,31 @@ public class OcipLevelManagerImpl extends AbsOcipOrgManager<OrgUserLevelTemp> {
         String name = t.getName();
         String resourceId = t.getResourceId();
 
-        if (Strings.isEmpty(unitId)) {
-            String info = "职务:" + name + "|id:" + id + "|resourceId:" + resourceId + ",unitId为空，导入失败!!";
+        if (Strings.isEmpty(id)){
+            String info = "职务:" + name + "|id:" + t.getId() + "|resourceId:" + resourceId + ",ObjectId为空，导入失败!!";
             LOGGER.info(info);
             addLog(info, resourceId, id, name, "POST", false);
+            return null;
+        }
+
+        if (Strings.isEmpty(unitId)) {
+            String info = "职务:" + name + "|id:" + t.getId() + "|resourceId:" + resourceId + ",unitId为空，导入失败!!";
+            LOGGER.info(info);
+            addLog(info, resourceId, t.getId(), name, "POST", false);
             return null;
         }
         OrgUnitTemp unitTemp = orgUnitTempManager.findOrgUnitTempById(unitId);
         if (unitTemp == null) {
-            String info = "职务:" + name + "|id:" + id + "|resourceId:" + resourceId + ",所属单位不存在，导入失败!!";
+            String info = "职务:" + name + "|id:" + t.getId() + "|resourceId:" + resourceId + ",所属单位不存在，导入失败!!";
             LOGGER.info(info);
-            addLog(info, resourceId, id, name, "POST", false);
+            addLog(info, resourceId, t.getId(), name, "POST", false);
             return null;
         }
         String objectId = unitTemp.getObjectId();
         if (Strings.isEmpty(objectId)) {
-            String info = "职务:" + name + "|id:" + id + "|resourceId:" + resourceId + ",objectId不存在，导入失败!!";
+            String info = "职务:" + name + "|id:" + t.getId() + "|resourceId:" + resourceId + ",objectId不存在，导入失败!!";
             LOGGER.info(info);
-            addLog(info, resourceId, id, name, "POST", false);
+            addLog(info, resourceId, t.getId(), name, "POST", false);
             return null;
         }
 

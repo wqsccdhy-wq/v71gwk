@@ -3,6 +3,9 @@ package com.seeyon.ctp.ociporg.manager.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.seeyon.ctp.common.exceptions.BusinessException;
+import com.seeyon.ctp.organization.bo.*;
+import com.seeyon.ctp.organization.manager.OrgManager;
 import org.apache.log4j.Logger;
 import org.springframework.util.CollectionUtils;
 
@@ -21,12 +24,8 @@ import com.seeyon.ctp.ociporg.po.OrgRelationTemp;
 import com.seeyon.ctp.ociporg.po.OrgUnitTemp;
 import com.seeyon.ctp.ociporg.po.OrgUserJoinTemp;
 import com.seeyon.ctp.ociporg.po.OrgUserLevelTemp;
-import com.seeyon.ctp.organization.bo.MemberPost;
-import com.seeyon.ctp.organization.bo.OrganizationMessage;
 import com.seeyon.ctp.organization.bo.OrganizationMessage.MessageStatus;
 import com.seeyon.ctp.organization.bo.OrganizationMessage.OrgMessage;
-import com.seeyon.ctp.organization.bo.V3xOrgMember;
-import com.seeyon.ctp.organization.bo.V3xOrgPrincipal;
 import com.seeyon.ctp.organization.po.OrgLevel;
 import com.seeyon.ctp.organization.po.OrgPost;
 import com.seeyon.ctp.util.FlipInfo;
@@ -48,6 +47,8 @@ public class OcipMemberManagerImpl extends AbsOcipOrgManager<OrgUserJoinTemp> {
     private OrgPostTempManager orgPostTempManager;
 
     private OrgUserLevelTempDao orgUserLevelTempDao;
+
+    protected OrgManager orgManager;
 
     @Override
     public void importOrg(String resourceId, FlipInfo flipInfo) {
@@ -98,6 +99,11 @@ public class OcipMemberManagerImpl extends AbsOcipOrgManager<OrgUserJoinTemp> {
         String messageInfo = "";
         try {
             V3xOrgMember orgMember = initMember(orgUserJoinTemp, resourceId);
+            if (orgMember == null){
+                orgUserJoinTemp.setIsFlag(new Short("2"));
+                orgUserJoinTempManager.updatOrgUserJoinTemp(orgUserJoinTemp);
+                return;
+            }
             if (orgMember != null) {
                 OrganizationMessage message = orgManagerDirect.addMember(orgMember);
                 success = message.isSuccess();
@@ -145,15 +151,15 @@ public class OcipMemberManagerImpl extends AbsOcipOrgManager<OrgUserJoinTemp> {
 
     }
 
-    private V3xOrgMember initMember(OrgUserJoinTemp orgUserJoinTemp, String resourceId) {
+    private V3xOrgMember initMember(OrgUserJoinTemp orgUserJoinTemp, String resourceId) throws BusinessException {
         V3xOrgMember member = new V3xOrgMember();
         String id = orgUserJoinTemp.getObjectId();
         if (Strings.isNullOrEmpty(id)) {
-            String name = member.getName();
-            String info = "人员:" + name + "|id:" + id + "|resourceId:" + resourceId + "ObjectId为空，导入失败!!";
+            String name = orgUserJoinTemp.getName();
+            String info = "人员:" + name + "|id:" + orgUserJoinTemp.getId() + "|resourceId:" + resourceId + "ObjectId为空，导入失败!!";
             LOGGER.info(info);
             System.out.println(info);
-            addLog(info, resourceId, id, name, "MEMBER", false);
+            addLog(info, resourceId, orgUserJoinTemp.getId(), name, "MEMBER", false);
             return null;
         }
         member.setId(Long.valueOf(id));
@@ -193,12 +199,26 @@ public class OcipMemberManagerImpl extends AbsOcipOrgManager<OrgUserJoinTemp> {
             addLog("人员:" + name + ",导入失败,objectId为空:id=" + unitId, resourceId, id, name, "MEMBER", false);
             return null;
         }
+
+        Short isFlag = unitTemp.getIsFlag();
+        //V3xOrgAccount accountById = orgManager.getAccountById(Long.valueOf(objectId));
+        if (isFlag != 1){
+            addLog("人员:" + name + ",导入失败,所属单位没有导入成功:unitId=" + objectId, resourceId, id, name, "MEMBER", false);
+            return null;
+        }
+        //V3xOrgAccount superAccount = orgManager.getAccountById(Long.valueOf(objectId));
         member.setOrgAccountId(Long.valueOf(objectId));
         if (!Strings.isNullOrEmpty(departmentId)) {
             OrgDepartmentTemp orgDepartmentTemp = orgDepartmentTempManager.findOrgDepartmentTempById(departmentId);
             if (orgDepartmentTemp != null) {
                 String depObjId = orgDepartmentTemp.getObjectId();
                 if (!Strings.isNullOrEmpty(depObjId)) {
+                    Short isFlag1 = orgDepartmentTemp.getIsFlag();
+                    //V3xOrgDepartment department = orgManager.getDepartmentById(Long.valueOf(depObjId));
+                    if(isFlag1 != 1){
+                        addLog("人员:" + name + ",导入失败,所属部门没有导入成功:depID=" + depObjId, resourceId, id, name, "MEMBER", false);
+                        return null;
+                    }
                     member.setOrgDepartmentId(Long.valueOf(depObjId));
                 }
             }
@@ -276,6 +296,7 @@ public class OcipMemberManagerImpl extends AbsOcipOrgManager<OrgUserJoinTemp> {
         return member;
     }
 
+
     public OrgUserJoinTempManager getOrgUserJoinTempManager() {
         return orgUserJoinTempManager;
     }
@@ -330,5 +351,13 @@ public class OcipMemberManagerImpl extends AbsOcipOrgManager<OrgUserJoinTemp> {
 
     public void setOrgUserLevelTempDao(OrgUserLevelTempDao orgUserLevelTempDao) {
         this.orgUserLevelTempDao = orgUserLevelTempDao;
+    }
+
+    public OrgManager getOrgManager() {
+        return orgManager;
+    }
+
+    public void setOrgManager(OrgManager orgManager) {
+        this.orgManager = orgManager;
     }
 }

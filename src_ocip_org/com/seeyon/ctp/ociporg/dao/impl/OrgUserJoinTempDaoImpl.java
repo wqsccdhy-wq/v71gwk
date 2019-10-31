@@ -18,7 +18,7 @@ public class OrgUserJoinTempDaoImpl implements OrgUserJoinTempDao {
 
     @Override
     public List<OrgUserJoinTemp> findOrgUserJoinTempByGrade(Short isFlag, String resourceId, FlipInfo flipInfo) {
-        String hql = "from OrgUserJoinTemp ojt where ojt.isFlag=:isFlag and ojt.resourceId=:resourceId";
+        String hql = "from OrgUserJoinTemp ojt where ojt.isFlag=:isFlag and ojt.resourceId=:resourceId and ojt.isAdmin!=0";
         Map<String, Object> parameterMap = new HashMap<String, Object>();
         parameterMap.put("isFlag", isFlag);
         parameterMap.put("resourceId", resourceId);
@@ -29,7 +29,7 @@ public class OrgUserJoinTempDaoImpl implements OrgUserJoinTempDao {
     @Override
     public Long getCount(Short isFlag, String resourceId) {
         Long count = 0l;
-        String hql = "select count(*) from OrgUserJoinTemp ojt where ojt.isFlag=:isFlag and ojt.resourceId=:resourceId";
+        String hql = "select count(*) from OrgUserJoinTemp ojt where ojt.isFlag=:isFlag and ojt.resourceId=:resourceId and ojt.isAdmin!=0";
         Map<String, Object> parameterMap = new HashMap<String, Object>();
         parameterMap.put("isFlag", isFlag);
         parameterMap.put("resourceId", resourceId);
