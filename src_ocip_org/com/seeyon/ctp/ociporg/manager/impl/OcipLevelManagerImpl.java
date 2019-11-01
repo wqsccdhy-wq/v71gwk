@@ -70,6 +70,7 @@ public class OcipLevelManagerImpl extends AbsOcipOrgManager<OrgUserLevelTemp> {
         Short result = new Short("1");
         String id = t.getId();
         String name = t.getName();
+        String messageInfo = "";
         boolean success = false;
         try {
             V3xOrgLevel orgLevel = initOrgLevel(t);
@@ -102,11 +103,15 @@ public class OcipLevelManagerImpl extends AbsOcipOrgManager<OrgUserLevelTemp> {
         } catch (Exception e) {
             success = false;
             t.setIsFlag(new Short("3"));
-            LOGGER.error("生成职务异常,职务:" + name + "|id:" + id, e);
+            messageInfo = "生成职务异常,职务:" + name + "|id:" + id;
+            LOGGER.error(messageInfo, e);
         } finally {
             try {
                 orgUserLevelTempManager.updateOrgUserLevelTemp(t);
-                addLog(messageStatus.toString(), resourceId, id, name, "LEVEL", success);
+                if (messageStatus != null) {
+                    messageInfo = messageStatus.toString();
+                }
+                addLog(messageInfo, resourceId, id, name, "LEVEL", success);
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -124,7 +129,7 @@ public class OcipLevelManagerImpl extends AbsOcipOrgManager<OrgUserLevelTemp> {
         String name = t.getName();
         String resourceId = t.getResourceId();
 
-        if (Strings.isEmpty(id)){
+        if (Strings.isEmpty(id)) {
             String info = "职务:" + name + "|id:" + t.getId() + "|resourceId:" + resourceId + ",ObjectId为空，导入失败!!";
             LOGGER.info(info);
             addLog(info, resourceId, id, name, "POST", false);

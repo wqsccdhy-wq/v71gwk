@@ -3,6 +3,7 @@ package com.seeyon.ctp.ociporg.manager.impl;
 import java.util.Collections;
 import java.util.List;
 
+import com.seeyon.ctp.util.Strings;
 import org.apache.log4j.Logger;
 import org.springframework.util.CollectionUtils;
 
@@ -85,6 +86,11 @@ public class OcipDepartmentManagerImpl extends AbsOcipOrgManager<OrgDepartmentTe
         String messageInfo = "";
         try {
             V3xOrgDepartment newdept = initDep(t);
+            if (newdept == null) {
+                t.setIsFlag(new Short("2"));
+                orgDepartmentTempManager.updatOrgDepartmentTemp(t);
+                return;
+            }
             OrganizationMessage message = orgManagerDirect.addDepartment(newdept);
             success = message.isSuccess();
             if (success) {
@@ -107,10 +113,9 @@ public class OcipDepartmentManagerImpl extends AbsOcipOrgManager<OrgDepartmentTe
             System.out.println(info);
 
         } catch (Exception e) {
-            messageInfo = e.getMessage();
-            success = false;
             t.setIsFlag(new Short("3"));
-            LOGGER.error("生成部门异常,部门:" + name + "|id:" + id, e);
+            messageInfo = "生成部门异常,部门:" + name + "|id:" + id;
+            LOGGER.error(messageInfo, e);
         } finally {
             try {
                 orgDepartmentTempManager.updatOrgDepartmentTemp(t);
@@ -134,20 +139,37 @@ public class OcipDepartmentManagerImpl extends AbsOcipOrgManager<OrgDepartmentTe
         // Map<String , Object> map = new HashMap<String, Object>();
         String unitId = t.getUnitId();
         OrgUnitTemp unitTemp = orgUnitTempManager.findOrgUnitTempById(unitId);
-        String g6UnitId = unitId;
+        String g6UnitId = "";
+        String resourceId = t.getResourceId();
+        String id = t.getId();
+        String name = t.getName();
         if (unitTemp != null) {
+            Short isFlag = unitTemp.getIsFlag();
+            if (isFlag > 1) {
+                addLog("导入部门失败，原因：所属单位导入失败", resourceId, id, name, "DEPARTMENT", false);
+                return null;
+            }
+
             g6UnitId = unitTemp.getObjectId();
         }
+        if (Strings.isEmpty(g6UnitId)) {
+            addLog("导入部门失败，原因：所属单位ID为空", resourceId, id, name, "DEPARTMENT", false);
+            return null;
+        }
         department.setOrgAccountId(Long.valueOf(g6UnitId));
-        department.setId(Long.valueOf(t.getObjectId()));
+        String objectId = t.getObjectId();
+        if (Strings.isEmpty(objectId)) {
+            addLog("导入部门失败，原因：objectId为空", resourceId, id, name, "DEPARTMENT", false);
+        }
+        department.setId(Long.valueOf(objectId));
         /*String code = t.getCode();
         if (Strings.isNullOrEmpty(code)) {
         	department.setCode(t.getId());
         }else {
         	department.setCode(code);
         }*/
-        department.setCode(t.getId());
-        department.setName(t.getName());
+        department.setCode(id);
+        department.setName(name);
         department.setCreateDeptSpace(false);
 
         // String superDepartment = "";
@@ -175,7 +197,7 @@ public class OcipDepartmentManagerImpl extends AbsOcipOrgManager<OrgDepartmentTe
         }
         department.setSortId(Long.valueOf(t.getSortId()));
         department.setSortIdType("0");// 0序号可重复，1序号不可重复
-        department.setResourceId(t.getResourceId());
+        department.setResourceId(resourceId);
         return department;
     }
 

@@ -74,6 +74,7 @@ public class OcipPostManagerImpl extends AbsOcipOrgManager<OrgPostTemp> {
         Short result = new Short("1");
         String id = t.getId();
         String name = t.getName();
+        String msg = "";
         boolean success = false;
         try {
             V3xOrgPost post = initPost(t);
@@ -106,11 +107,11 @@ public class OcipPostManagerImpl extends AbsOcipOrgManager<OrgPostTemp> {
         } catch (Exception e) {
             success = false;
             t.setIsFlag(new Short("3"));
-            LOGGER.error("生成岗位异常,岗位:" + name + "|id:" + id, e);
+            msg = "生成岗位异常,岗位:" + name + "|id:" + id;
+            LOGGER.error(msg, e);
         } finally {
             try {
                 orgPostTempManager.updateOrgPostTemp(t);
-                String msg = "";
                 if (messageStatus != null) {
                     msg = messageStatus.toString();
                 }
@@ -130,7 +131,7 @@ public class OcipPostManagerImpl extends AbsOcipOrgManager<OrgPostTemp> {
         String name = t.getName();
         String resourceId = t.getResourceId();
         post.setName(name);
-        if (Strings.isEmpty(id)){
+        if (Strings.isEmpty(id)) {
             String info = "岗位:" + name + "|id:" + t.getId() + "|resourceId:" + resourceId + ",ObjectId为空，导入失败!!";
             LOGGER.info(info);
             addLog(info, resourceId, t.getId(), name, "POST", false);

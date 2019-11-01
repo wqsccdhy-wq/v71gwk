@@ -136,10 +136,10 @@ public class OcipUnitManagerImpl extends AbsOcipOrgManager<OrgUnitTemp> {
                 System.out.println(info);
             }
         } catch (Exception e) {
-            messageInfo = e.getMessage();
             success = false;
             orgUnitTemp.setIsFlag(new Short("3"));
-            LOGGER.error("生成单位异常1,单位:" + name + "|id:" + id, e);
+            messageInfo = "生成单位异常1,单位:" + name + "|id:" + id + "|" + e.getMessage();
+            LOGGER.error(messageInfo, e);
         } finally {
             try {
                 orgUnitTempManager.updatOrgUnitTemp(orgUnitTemp);
@@ -171,7 +171,7 @@ public class OcipUnitManagerImpl extends AbsOcipOrgManager<OrgUnitTemp> {
             admin.setId(UUIDLong.longUUID());
             admin.setV3xOrgPrincipal(new V3xOrgPrincipal(admin.getId(), "admin_" + admin.getId(), "123456"));
             String info = "单位:" + name + "|id:" + id + "|没有单位管理员，自动生成单位管理员,账号:";
-            addLog(info, orgUnitTemp.getResourceId(), orgUnitTemp.getId(), name, "UNIT", false);
+            addLog(info, orgUnitTemp.getResourceId(), orgUnitTemp.getId(), name, "UNIT", null);
         } else {
             OrgUserJoinTemp orgUserJoinTemp = orgUserJoinTempManager.findOrgUserJoinTempById(adminId);
             if (orgUserJoinTemp == null) {
@@ -193,7 +193,19 @@ public class OcipUnitManagerImpl extends AbsOcipOrgManager<OrgUnitTemp> {
     private V3xOrgAccount initAccount(OrgUnitTemp orgUnitTemp, String resourceId) {
         String parentId = orgUnitTemp.getParentId();
         V3xOrgAccount newAccount = new V3xOrgAccount();
-        newAccount.setId(Long.valueOf(orgUnitTemp.getObjectId()));// orgUnitTemp.getObjectId()
+        String objectId1 = null;
+        try {
+            objectId1 = orgUnitTemp.getObjectId();
+            if (Strings.isNullOrEmpty(objectId1)){
+                addLog("objectId为空", resourceId, orgUnitTemp.getId(), orgUnitTemp.getName(), "UNIT", false);
+                return null;
+            }
+        } catch (Exception e) {
+            objectId1 = null;
+            e.printStackTrace();
+            return null;
+        }
+        newAccount.setId(Long.valueOf(objectId1));// orgUnitTemp.getObjectId()
         newAccount.setOrgAccountId(newAccount.getId());
         String name = orgUnitTemp.getName();
         String aliasName = orgUnitTemp.getAliasName();

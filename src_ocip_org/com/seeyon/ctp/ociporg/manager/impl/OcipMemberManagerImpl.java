@@ -130,10 +130,10 @@ public class OcipMemberManagerImpl extends AbsOcipOrgManager<OrgUserJoinTemp> {
                 orgUserJoinTemp.setIsFlag(new Short("4"));
             }
         } catch (Exception e) {
-            messageInfo = e.getMessage();
             success = false;
             orgUserJoinTemp.setIsFlag(new Short("3"));
-            LOGGER.error("生成人员异常,人员:" + name + "|id:" + id, e);
+            messageInfo = "生成人员异常,人员:" + name + "|id:" + id + "|" + e.getMessage();
+            LOGGER.error(messageInfo, e);
         } finally {
             try {
                 orgUserJoinTempManager.updatOrgUserJoinTemp(orgUserJoinTemp);
