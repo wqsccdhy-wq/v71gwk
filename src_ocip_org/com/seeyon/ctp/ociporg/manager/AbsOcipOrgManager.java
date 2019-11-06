@@ -25,6 +25,8 @@ public abstract class AbsOcipOrgManager<T> implements OcipOrgManager<T> {
             isOk = OrgOcipTempLog.RESULT_WARN;
         } else if (success) {
             isOk = OrgOcipTempLog.RESULT_SUCCESS;
+            //成功的信息不记录日志
+            return;
         } else {
             isOk = OrgOcipTempLog.RESULT_FAUL;
         }
