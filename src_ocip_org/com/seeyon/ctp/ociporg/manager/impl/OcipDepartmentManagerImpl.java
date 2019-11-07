@@ -178,7 +178,19 @@ public class OcipDepartmentManagerImpl extends AbsOcipOrgManager<OrgDepartmentTe
         if (1 == grade) {
             department.setSuperior(Long.valueOf(g6UnitId));
         } else {
-            department.setSuperior(Long.valueOf(t.getParentId()));
+            String parentId = t.getParentId();
+            if(Strings.isNotEmpty(parentId)){
+                OrgDepartmentTemp orgDepartmentTempById = orgDepartmentTempManager.findOrgDepartmentTempById(parentId);
+                if(orgDepartmentTempById!=null){
+                    String pbjectId = orgDepartmentTempById.getObjectId();
+                    if (Strings.isNotEmpty(pbjectId)){
+                        department.setSuperior(Long.valueOf(pbjectId));
+                    }else{
+                        addLog("导入部门失败，原因：上级ID为空", resourceId, id, name, "DEPARTMENT", false);
+                        return null;
+                    }
+                }
+            }
         }
 
         // map.put("superDepartment", superDepartment);//上级部门
