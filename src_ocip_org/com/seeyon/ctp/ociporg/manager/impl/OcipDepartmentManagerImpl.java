@@ -186,10 +186,13 @@ public class OcipDepartmentManagerImpl extends AbsOcipOrgManager<OrgDepartmentTe
                     if (Strings.isNotEmpty(pbjectId)){
                         department.setSuperior(Long.valueOf(pbjectId));
                     }else{
-                        addLog("导入部门失败，原因：上级ID为空", resourceId, id, name, "DEPARTMENT", false);
+                        addLog("导入部门失败1，原因：上级ID为空", resourceId, id, name, "DEPARTMENT", false);
                         return null;
                     }
                 }
+            }else{
+                addLog("导入部门失败2，原因：上级ID为空", resourceId, id, name, "DEPARTMENT", false);
+                return null;
             }
         }
 
